@@ -10,6 +10,13 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <!--  include Bootstrap toggle CSS -->
   <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+  
+  <style type="text/css">
+    .rotate {
+      transform: rotate(-90deg);
+      text-align: top;
+    }
+    </style>
 
   <title>Tab Testing</title>
 </head>
@@ -27,92 +34,53 @@
     <button class="button form-control bg-danger text-light rounded col-sm-4" id="uncheckAllBtn">Uncheck All</button>
   </div> <!-- close row for check all/none boxees -->
 
-  
- 
-
   <!-- the nav controlling the panes -->
   <nav class="nav nav-tabs nav-justified" role="tablist">
-    <a class="nav-item nav-link active" id="tab1-tab" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="true">Countries A-L</a>
-    <a class="nav-item nav-link" id="tab2-tab" data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false">Countries M-R</a>
-    <a class="nav-item nav-link" id="tab3-tab" data-toggle="tab" href="#tab3" role="tab" aria-controls="tab3" aria-selected="false">Countries S-Z</a>
+    <a class="nav-item nav-link active" id="tab1-tab" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="true">Choose Countries, make cards</a>
+    <a class="nav-item nav-link" id="tab2-tab" data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false">Grid like a map</a>
   </nav>
 
   <!-- The panes -->
   
   <div class="tab-content border border-top-0 rounded-bottom px-3">
     <!-- Pane 1 -->
-    <div class="tab-panel " id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
-      <div class="container">
-        <!-- Grid of checkboxes to choose countries for card -->
-      <form > 
-        <div class="row d-flex justify-content-center"> <!-- open row for checkboxes -->
-          <div class="col"> <!-- open col for checkboxes -->   
-            <label for="chosenCountries" class = "sr-only">Select Countries for Currency Conversion:</label>
-            <div class="custom-control custom-switch col col-md-4 col-lg-3" >
-                <div class="custom-control custom-switch" >
-                  <input type="checkbox" class="custom-control-input" value='AUD' id="customSwitch1">
-                  <label class="custom-control-label" for="customSwitch1">Australian Dollar: AUD</label>
-                </div>
-              
-                <div class="custom-control custom-switch" >
-                  <input type="checkbox" class="custom-control-input" value='THB' id="customSwitch2"> 
-                  <label class="custom-control-label" for="customSwitch2">Baht: THB</label>    
-                </div>
-              
-                <div class="custom-control custom-switch" >
-                  <input type="checkbox" class="custom-control-input"  value='BRL' id="customSwitch3">
-                  <label class="custom-control-label" for="customSwitch3">Brazilian Real: BRL</label>
-                </div>
-            </div> <!-- close form-check -->
-          </div> <!-- close col for check boxes-->
-        </div> <!-- close row for checkboxes-->
-      </form>
-    </div>
-  </div> 
+    <p>This is where our existing content will go</p>
     
   <!-- Pane 2 -->
     <div class="tab-pane" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
-      <div class="container">
-        <!-- Grid of checkboxes to choose countries for card -->
-      <form > 
-        <div class="row d-flex justify-content-center"> <!-- open row for checkboxes -->
-          <div class="col"> <!-- open col for checkboxes -->   
-            <label for="chosenCountries" class = "sr-only">Select Countries for Currency Conversion:</label>
-            <div class="form-check form-check-inline col col-md-4 col-lg-3" >
-              <input type="checkbox" class="form-check-input " name="cntry" value='AUD'>
-                  Bulgarian Lev: BGN
-              <input type="checkbox" class="form-check-input " name="cntry" value='THB'>      
-                  Canadian Dollar: CAD
-              <input type="checkbox" class="form-check-input " name="cntry" value='BRL'>
-                Croatian Kuna: HRK
-            </div> <!-- close form-check -->
-          </div> <!-- close col for check boxes-->
-        </div> <!-- close row for checkboxes-->
-      </form>
-    </div>
+      <table class="table table-hover table-sm">
+        <caption>Horizontal/vertical lookup table for conversions between countries</caption>
+        <thead class="">
+          <tr>
+            <th scope="col"></th>
+            <th scope="col" class="rotate"><p>USD</p></th>
+            <th scope="col" class="rotate"><p>CAD</p></th>
+            <th scope="col" class="rotate"><p>NZD</p></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">USD</th>
+            <td>1</td>
+            <td>2</td>
+            <td>4</td>
+          </tr>
+          <tr>
+            <th scope="row">CAD</th>
+            <td>.5</td>
+            <td>1</td>
+            <td>.333333333</td>
+          </tr>
+          <tr>
+            <th scope="row">NZD</th>
+            <td>.25</td>
+            <td>3</td>
+            <td>1</td>
+          </tr>
+        </tbody>
+      </table>
   </div> 
     
-  <!-- Pane 3 -->
-  <div class="tab-pane" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
-      <div class="container">
-        <!-- Grid of checkboxes to choose countries for card -->
-      <form > 
-        <div class="row d-flex justify-content-center"> <!-- open row for checkboxes -->
-          <div class="col"> <!-- open col for checkboxes -->   
-            <label for="chosenCountries" class = "sr-only">Select Countries for Currency Conversion:</label>
-            <div class="form-check form-check-inline col col-md-4 col-lg-3" >
-              <input type="checkbox" class="form-check-input " name="cntry" value='AUD'>
-                Czech Koruna: CZK
-              <input type="checkbox" class="form-check-input " name="cntry" value='THB'>      
-                Danish Krone: DKK
-              <input type="checkbox" class="form-check-input " name="cntry" value='BRL'>
-                Euro: EUR Forint: HUF
-            </div> <!-- close form-check -->
-          </div> <!-- close col for check boxes-->
-        </div> <!-- close row for checkboxes-->
-      </form>
-    </div>
-  </div> 
 </div>
      
   <!-- Include Bootstrap JavaScript -->

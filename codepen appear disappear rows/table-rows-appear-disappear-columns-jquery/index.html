@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Include Bootstrap 4 CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<!-- Include Font Awesome 4 -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	<!-- DataTables from https://datatables.net -->
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/b-1.6.1/b-colvis-1.6.1/datatables.min.css"/>
+ 
+
+  
+<title>Insert Title Here</title>
+</head>
+  
+<body>
+  <!-- might need to use column().visible() from https://datatables.net/examples/api/show_hide.html -->
+  <!-- Column-toggle plugin might do the column hiding job? https://api.jquerymobile.com/table-columntoggle/ -->
+
+  <button class="btn form-control bg-success text-light rounded col-sm-2 mb-2" data-toggle="collapse" data-target=".usd-collapse" aria-expanded="true" aria-controls="usd-row">USD toggle</button>
+  <button class="btn form-control bg-success text-light rounded col-sm-2 mb-2" data-toggle="collapse" data-target=".cad-collapse" aria-expanded="true" aria-controls="cad-row">CAD toggle</button>
+  <button class="btn form-control bg-success text-light rounded col-sm-2 mb-2" data-toggle="collapse" data-target=".nzd-collapse" aria-expanded="false" aria-controls="nzd-row">NZD toggle</button>
+  
+<table id="conversionTable" data-role="table" data-mode="columntoggle"  class="table table-condensed table-hover table-sm" >
+    <caption>Horizontal/vertical lookup table for conversions between countries</caption>
+
+      <tr>
+        <th scope="col"></th>
+        <th scope="col" class=" show usd-collapse" id="usd-col">
+          <p>USD</p>
+        </th>
+        <th scope="col" class=" show cad-collapse" id="cad-col" >
+          <p>CAD</p>
+        </th>
+        <th scope="col" class=" collapse nzd-collapse" id="nzd-col">
+          <p>NZD</p>
+        </th>
+        
+      </tr>
+
+    <tbody>
+      <tr class=" border show usd-collapse" id="usd-row">
+        <th scope="row">USD</th>
+        <td>1</td>
+        <td>2</td>
+        <td>4</td>
+      </tr>
+      <tr class=" border show cad-collapse" id="cad-row">
+        <th scope="row" >CAD</th>
+        <td>.5</td>
+        <td>1</td>
+        <td>.33</td>
+      </tr>
+      <tr class="border collapse nzd-collapse" id="nzd-row">
+        <th scope="row">NZD</th>
+        <td>.25</td>
+        <td>3</td>
+        <td>1</td>
+      </tr>
+      
+    </tbody>
+  </table>
+ 
+
+  
+  <!-- Include Bootstrap JavaScript -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+ <!-- makes table columns hideable according to https://datatables.net/examples/api/show_hide.html -->
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/b-1.6.1/b-colvis-1.6.1/datatables.min.js"></script>
+
+</script>
+
+</body>
+</html>
