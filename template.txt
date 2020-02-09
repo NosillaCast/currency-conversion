@@ -1,0 +1,3 @@
+<!-- template string -->
+
+<li class = "list-group">{{country}}: {{rate}}</li>

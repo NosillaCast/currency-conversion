@@ -1,0 +1,41 @@
+ <!-- template string -->
+
+
+<div class="col-12 col-md-6 col-lg-4" id="card{{cardNumber}}" tabindex = "0" >
+  <div class = "card shadow p-3 mb-5 bg-light rounded" id="{{cardBase}}">
+
+  <div class="card-header bg-primary">
+    <h1 class="card-title h5 text-center text-white">{{convertAmount}} in {{countryCode}} converts to:</h1>
+    <button type="button" class="close" aria-label="Close" id="closebtn" > 
+      <!-- onclick="closeCard()" -->
+      <!-- id="closeCardBtn"  -->
+      <span aria-hidden="true">&times;</span>
+    </button>
+
+    <!-- <h1 class="card-subtitle small text-muted text-center">this is card {{cardNumber}}</h1> -->
+  </div>
+
+  <div class="card-body border border-primary rounded-lg text-danger text-monospace">
+    
+      <table>
+      {{#countries}}
+      <div class="">
+        <tr class="small">
+          <td width="60%">{{currencyName}}</td><td>({{country}}):</td><td style="text-align:right" width="30%">{{rate}}</td>
+      </tr>
+      </div>
+      {{/countries}}
+    </table>
+  </div>
+
+  <div class="card-footer bg-light">
+    <div class="card-link text-muted">
+      Source: <a href = "https://api.exchangeratesapi.io">exchangeratesapi.io</a>
+    </div>
+  </div>
+</div>
+  
+</div>
+
+
+

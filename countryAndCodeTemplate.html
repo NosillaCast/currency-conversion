@@ -1,0 +1,15 @@
+<!-- template string -->
+<div class="form-inline justify-content-center">
+  <label for="countrySelected" class="mr-2">In what currency?</label>
+  <div class="form-group">
+
+    <select class="custom-select form-control" id="countrySelected">
+      {{#dropDownValues}}
+      <option value='{{currencyCode}}'>
+          {{currencyName}}: {{currencyCode}}
+      </option>
+      {{/dropDownValues}}
+    </select>
+  </div>
+    
+</div>

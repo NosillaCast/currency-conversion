@@ -1,0 +1,458 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Include Bootstrap 4 CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<!-- Include Font Awesome 4 -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <title>Currency exchange</title>
+  <!-- 
+    Style to hide border on focus to cards 
+    I know this is inaccessible but irrelevant in this example
+  -->
+  <style >:focus { outline: none; }
+</style>
+</head>
+<body>
+	<nav class='navbar navbar-expand-md navbar-light'>
+		<a class='navbar-brand' href="#">Navigation</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						PBS Resources
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="nav-link dropdown-item" href="https://www.bartbusschots.ie/s/2019/10/04/pbs-83-of-x-bootstrap-cards/"  rel="no opener" target="_blank">PBS 83 - Bootstrap Cards</a>
+            <a class="nav-link dropdown-item" href="https://www.bartbusschots.ie/s/2019/10/19/pbs-84-of-x-objects-as-dictionaries-in-javascript-redux-update/"  rel="no opener" target="_blank">PBS 84 — Objects as Dictionaries</a>
+            <div class="dropdown-divider"></div>
+            <a class="nav-link dropdown-item" href="https://www.xe.com/de/iso4217.php#G" rel="no opener" target="_blank"></a>Currency Codes</a>
+						<a class="nav-link dropdown-item" href="https://www.podfeet.com/blog/pbs-index/"  rel="no opener" target="_blank">PBS Index</a>
+						<a class="nav-link dropdown-item" href="https://getbootstrap.com/docs/4.3/getting-started/introduction/"  rel="no opener" target="_blank">Bootstrap Docs</a>
+						<a class="nav-link dropdown-item" href="https://api.jquery.com"  rel="no opener" target="_blank">jQuery API</a>
+						<a class="nav-link dropdown-item" href="https://api.jquery.com/category/ajax/"  rel="no opener" target="_blank">AJAX API</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</nav>
+  <header class=''>
+    <div class="container">
+      <div class='row'>
+        <div class='col mt-3'>
+          <h1 class='h3 bg-light text-center pt-3 pb-3'>Currency conversion</h1>
+        </div>
+      </div>
+    </div>
+  
+    <div class="container-fluid">
+
+        <!-- Text box to enter amount to convert (no mustache) -->
+        
+          <div class="row d-flex mb-4">
+            <div class="col">
+              <div class="form-inline justify-content-center was-validated">
+                <label for="tbVal" class="mr-2">Enter the amount you'd like to convert: </label>
+                <div class="form-group col-2">
+                  <input class="form-control" type="number" min="1" id="tbVal" name="convertAmount" value="1" >
+                </div>
+              </div>
+            </div>
+          </div>
+
+      <!-- Dropdown to select base country -->
+      <div class="row d-flex">
+        <div class="col">
+          <p class="align-top" id="countrySelect"></p>
+        </div>
+      </div>
+
+      <!-- Checkboxes -->
+        
+      <div class="row"> <!-- open row for instructions -->
+        <div class="col bg-info p-2 border rounded-pill text-light text-center mb-3">Select at least one country for currency conversion</div>
+      </div> <!-- close row for instructions-->
+      
+      <div class="form-group row d-flex justify-content-center"><!-- buttons to check all and uncheck all -->
+       
+        <button class="button form-control bg-success text-light rounded col-sm-2" id="checkAllBtn">Check All</button>
+        <button class="button form-control bg-danger text-light rounded col-sm-2" id="uncheckAllBtn">Uncheck All</button>
+      </div> <!-- close row for check all/none boxees -->
+      
+      <!-- Grid of checkboxes to choose countries for card -->
+    
+      <!-- open row for checkboxes--> 
+        <!-- Placeholder div for mustache chooseCountriesTemplate -->
+        <div class="form-group row justify-content-center" id="chooseCountries"></div>      
+    <!-- close row for check boxes-->
+
+
+      <div class="form-group row justify-content-center">
+        <button class="button form-control bg-success text-light rounded col-sm-8 col-md-4" id="setBaseCountryBtn">Show Conversions</button>
+
+      </div>
+      
+    </div>
+
+    <!-- Bootstrap card created with cardTemplate.html -->
+    <div class="container">
+      <div class="row" id="cardsPlaceholder"></div>   
+    </div>
+
+  </header>
+  <div class='container'>
+    <div class="row">
+      <div class="col">
+        <a href="#" data-scroll-to="body" text-align="center">Scroll to Top</button></p>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Include Bootstrap JavaScript from CDNs -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<!-- is.js library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/is_js/0.9.0/is.min.js" integrity="sha256-lnJeulOa3e5IO2EzHr8jKJ3CbT80MBwkS5a+n2ooIr4=" crossorigin="anonymous"></script>
+<!-- Include mustache.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.js" integrity="sha256-eWzD4VoILNfodzTHdCIMKX/k47LcM3hmpTfFhAR7Cj0=" crossorigin="anonymous"></script>
+
+
+<!-- Create script here -->
+<script type='text/javascript'>
+
+
+/****************************************************
+* INSIDE THE SCRIPT TAG                             *
+* WRITE BIG COMMENT BLOCKS LIKE THIS                *
+****************************************************/
+
+/*************************
+* VARIABLE DEFINITIONS   *
+*************************/
+var myTemplate = {};
+var myView = {};
+var allTplAndDataPromise = [];
+var countryCodes = [];
+var exchangeRates = [];
+var countryRates = [];
+var baseCurrency = "USD";
+var tempView = [];
+// var finalView = []; //  view to make the cards
+var allView = []; // view to make the dropdown with all countries
+var card = [];
+var countryCode = {};
+var cardNumber = {};
+var templPlaceholder = '';
+var aCard = {};
+let countries = [];
+var cardBase = "";
+var acn = ""; // holding place for currencyName to make chooseCountryView
+var acc = ""; // holding place for allCountryCode to make chooseCountryView
+function closeCard(){};
+var ccRatePairs = '';
+var aDropDown = {};
+var aCheckbox = {};
+var convertAmount = ''; // the value they type into the textbox; amount to convert
+
+// A promise to pull the template file template.txt for use in the mustaches
+const tplPromise = $.ajax({
+  url: './template.txt',
+  method: 'GET',
+  dataType: 'html',
+  cache: false
+});
+// A promise to pull the country codes and exchange rates from exchangeratesapi.io
+const dataPromise = $.ajax({ 
+  url: 'https://api.exchangeratesapi.io/latest?base=USD',
+  method: 'GET',
+  dataType: 'json',
+  cache: false,
+});
+// A promise to pull the cardTemplate.html file used to build the cards
+const cardTplPromise = $.ajax({
+  url: './cardTemplate.html',
+  method: 'GET',
+  dataType: 'html',
+  cache: false
+});
+// A promise to pull the countryAndCodeTemplate.html file used to build the dropdown
+const dropdownTplPromise = $.ajax({
+  url: './countryAndCodeTemplate.html',
+  method: 'GET',
+  dataType: 'html',
+  cache: false
+});
+// a promise to pull the data of all the country/code info
+const dropdownTplData = $.ajax({
+  url: './countryAndCodeData.json', // source ISO 4217 https://www.xe.com/de/iso4217.php
+  method: 'GET',
+  dataType: 'json',
+  cache: false
+});
+const checkboxTplPromise = $.ajax({
+  url: './chooseCountriesTemplate.html',
+  method: 'GET',
+  dataType: 'html',
+  cache: false
+});
+
+// a promise that returns an array with the template in [0] and the data (view) in [1]
+allTplAndDataPromise = Promise.all([tplPromise, dataPromise, cardTplPromise,dropdownTplPromise,dropdownTplData,checkboxTplPromise]); 
+
+// Use .then operator to take action now that the promises are all resolved by the Promise.all
+allTplAndDataPromise.then(
+  function(xArray){
+    // Assign variable names to the template and view
+    myTemplate = xArray[0];
+    myView = xArray[1];
+    myCardTemplate = xArray[2];
+    ddTemplate = xArray[3]; // template for dropdown
+    allCountryView = xArray[4]; // data file with all countries and codes
+    cbTemplate = xArray[5]; // template for checkboxes
+    
+    // ********************** //
+    //   path for aCard view: //
+    // ***********************//
+        // --> exchangerate.io (AJAX) 
+          // --> xArray[1] (promise.then)
+          // --> myView = xArray[1]
+          // --> aRate.rate from myView.rates
+          // --> card from aRate
+          // --> countries = card
+          //  --> aCard from countries used in Mustache render
+
+    /**************************************************************
+    / Building the dropdownView of all the country names and codes *
+    ***************************************************************/
+
+    // path for allCountryView:
+      // countryAndCodeData.json 
+        // --> dropdownTplData (AJAX) 
+          // --> xArray[4] (promise.then) 
+            //  --> allCountryView
+            // allCountryView is ALL COUNTRIES with 
+            // AlphabeticCode: "AFN", name: "Afghani", Entity: "AFGHANISTAN"
+    
+    // path for dropdown template
+      // countryAndCodeTemplate.html (AJAX)
+        // --> xArray[3] (Promise.then)
+        // --> ddTemplate = xArray[3]
+
+    // path for ccRatePairs
+      // --> exchangerate.io (AJAX)
+      // --> xArray[1] (promise.then)
+      // --> ccRatePairs = xArray[1].rates
+    
+    // path for checkbox template
+      // chooseCountriesTemplate.html (AJAX)
+        // --> checkboxTplPromise from chooseCountriesTemplate.html
+        // --> xArray[5] (Promise.then)
+        // --> cbTemplate = xArray[5]
+
+    // for every country code from exchangerate we want to add the alphabeticCode from allCountryView. e.g. loop through exchangerate. exchangerate = ccRatePairs
+
+    ccRatePairs = xArray[1].rates; // ccRatePairs now only has the country code/rate pairs. But we'll be adding this data to the new object.
+    // console.log(`the keys in ccRatePairs is ${Object.keys(ccRatePairs)}`);
+
+    dropDownView = {}; // when functioning this will have as keys all of the currency codes (cc) and with it, currency codes (cc): currency names (cn), cc: rates and maybe more
+  
+    for (const cc in ccRatePairs){
+      // console.log(Object.keys(ccRatePairs)); // this is all the cc's in an array created by Object.keys
+      // console.log(Object.values(ccRatePairs)); // this is all the rates in an array created by Object.values
+      for (let i = 0; i < allCountryView.length; i++ ){
+        let cnAll = allCountryView[i]['name'];
+        let ccAll = allCountryView[i]['AlphabeticCode'];
+        let cr = '';
+        // want to look up cc key in ccRateParis and make cr = the value for that key
+        // if ccAll == cc, then find the index of cc and use it to pull the rate from ccRatePairs
+       
+        if (ccAll == cc){
+          let ccIndex = Object.keys(ccRatePairs).indexOf(cc);
+          // console.log(ccIndex); // YES this returns 32 indices
+          cr = Object.values(ccRatePairs)[ccIndex];
+          
+          dropDownView[cc] = {currencyCode: ccAll, currencyName: cnAll, currencyRate: cr} 
+          // with [cc] it does them all, but makes objects with the cc as the key
+          // without [cc] it only keeps the last one
+        }
+      };
+    }
+    // get the values from dropDownView (which is the cc,cn,cr) and sort by the country name
+    // sort code learned from http://www.javascriptkit.com/javatutors/arraysort2.shtml
+
+    let dropDownValues = Object.values(dropDownView).sort(function(a, b){
+      var nameA=a.currencyName.toLowerCase(), nameB=b.currencyName.toLowerCase()
+      if (nameA < nameB) //sort string ascending
+          return -1 
+      if (nameA > nameB)
+          return 1
+      return 0 //default return value (no sorting)
+    });
+    
+    // console.log(dropDownValues); // array
+    let currencyCode = {};
+    let currencyName = {};
+    let currencyRate = {};
+
+    for (i = 0; i < dropDownValues.length; i++){
+      currencyCode = dropDownValues[i]['currencyCode']; 
+      currencyName = dropDownValues[i]['currencyName'];
+      currencyRate = dropDownValues[i]['currencyRate'];
+      // build the dropdown
+      aDropDown = {
+        dropDownValues,
+          "currencyCode": currencyCode,
+          "currencyName": currencyName,
+          "currencyRate": currencyRate
+      }
+     
+    }
+    // Render mustache to populate drop down menu
+    $('#countrySelect').append(Mustache.render(ddTemplate, aDropDown));
+    
+    // Render mustache to populate checkboxes
+    // checkbox template but borrowing aDropDown data file
+    $('#chooseCountries').append(Mustache.render(cbTemplate, aDropDown));
+
+    // this pushes the currency name (called simply name) into the cards
+    for (let i = 0; i < allCountryView.length; i++ ){
+      let cn = allCountryView[i]['name'];
+      let cc = allCountryView[i]['AlphabeticCode'];
+      allView.push({'acn':cn, 'acc':cc })
+      // console.log(allView); // shows all currency names & 3-digit codes in an array
+    };
+
+    /**********************************************
+    * generic function to make all of the cards *
+    **********************************************/
+    
+    var makecard = function(r,cc){
+      // create an empty array that will hold the country: rate pairs
+      countries = [];
+      card = [];
+      
+      for(const c of cc){ // Look up each country code and get it's rate
+      // console.log(c,'is c'); // identifies the 5 countries as "c"
+        let aRate = {};  //make an empty Object
+        aRate.country = c;  // populate aRate with the 5 cardCountries codes
+
+      // loop through the allView looking for the 5 countries
+      // Find the index of each, and set currencyName to the acn from that index
+      for (i=0; i < allView.length; i++){
+        if (allView[i].acc == c){
+          myIndex = i; // now I know the index where the 5 countries are
+          aRate.currencyName = allView[myIndex].acn;
+        }
+      }
+        // Populate the rate, adjusted for the desired cardBase 
+        // Multiplied by convertAmount, the number they type into the texbox
+      
+        console.log(`convertAmount as of line 318 is: ${convertAmount}`);
+        aRate.rate = (convertAmount*((myView.rates[c])/myView.rates[cardBase])).toFixed(2);
+
+        // push the countries, rates and currency names into the card
+        card.push(aRate);  // 
+      }
+     
+      // copy array created in previous loop
+      countries = card;
+      
+      // create a view called aCard to create each card with the template
+      // Dorothy Rendon:
+      // That was to build the entire card (a header with base country, card #, base currency) AND all the country rates (in 'countries') with one Mustache template and view.  So the matching template loops over 'countries' and creates the header with the key/value pairs. I think I was trying to get you into looping with Mustache.
+      aCard = {
+        countries,
+        "countryCode": cardBase,
+        "cardNumber": cardNo,
+        "cardB": cardBaseCurrencyName,
+        "convertAmount": convertAmount
+      }
+      $('#cardsPlaceholder').append(Mustache.render(myCardTemplate, aCard));
+
+      //===========================//
+      //   make cards dismissable  //
+      //===========================// 
+      
+      $('.close').on('click',function() {
+        $(this).closest('.card').fadeOut();
+      })
+    }
+    
+    //  Create an array of the countries for the cards
+    // var cardCountries = ["RUB", "PHP", "DKK", "SEK", "GBP"];
+
+    // Get the value of country selection to put into cardBase
+    // also get the checked countries and push them into cardCountries
+    var cardNo = '0';
+    $('#setBaseCountryBtn').click(function(){
+      cardNo++
+      
+      convertAmount = $('#tbVal').val();
+      if (!(convertAmount > 0)){
+        // const $a = $('<div>').text("Conversion amount must be greater than zero.")
+        // $a.addClass('alert alert-danger');
+        // $a.alert();
+        alert("Conversion amount must be a numeric value greater than zero.")
+         
+        return
+      }
+
+      // Find country code from dropdown (this is a 3-letter string)
+      cardBase = ($('#countrySelected option:selected').val());
+      
+      for (i=0; i < allView.length; i++){
+        if (allView[i].acc == cardBase){
+          myIndex = i; // now I know the index where the 5 countries are
+          cardBaseCurrencyName = allView[myIndex].acn;
+        }
+      
+      }
+      // cardCountries needs to be populated by checkboxes
+      // so if checked .value cardCountries.push[value] "each"
+      // do it on the add card button
+      var cardCountries = [];
+      $.each($("input[name='cntry']:checked"), function(){
+          cardCountries.push($(this).val());
+      });
+
+      makecard(cardNo,cardCountries);
+      
+      // Move focus to the most recent card created
+      $("#card" + cardNo).focus();
+      
+    });
+
+    /**************************************************
+    * Script to check all the boxes (and uncheck all) *
+    ***************************************************/
+    // Click handler for checkAll
+    $('#checkAllBtn').click(function(){
+      $("input:checkbox").prop("checked", true);
+    })
+    // Click handler for uncheckAll
+    $('#uncheckAllBtn').click(function(){
+      $("input:checkbox").prop("checked", false);
+    })
+ 
+  });
+  
+  allTplAndDataPromise.catch(
+    function(){
+      console.log('something is wrong');
+  });
+  
+
+</script>
+</body>
+</html>

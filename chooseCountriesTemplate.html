@@ -1,0 +1,13 @@
+<!-- template string for checkboxes-->
+
+  <label for="chosenCountries" class = "sr-only">Select Countries for Currency Conversion:</label>
+  {{#dropDownValues}}
+  
+  <div class="form-check form-check-inline col col-md-4 col-lg-3 border border-secondary">
+    <div class="custom-control custom-switch" >
+      <input type="checkbox" class="custom-control-input" name="cntry" value='{{currencyCode}}' id='country{{currencyCode}}'>
+      <label for='country{{currencyCode}}' class="custom-control-label">{{currencyName}}: {{currencyCode}}</label>        
+    </div> 
+  </div>
+     
+  {{/dropDownValues}}
