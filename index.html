@@ -302,6 +302,7 @@ allTplAndDataPromise.then(
     myCardTemplate = xArray[2];
     ddTemplate = xArray[3]; // template for dropdown
     allCountryView = xArray[4]; // data file with all countries and codes
+    console.log(allCountryView);
     cbTemplate = xArray[5]; // template for checkboxes
     
     // ********************** //
@@ -365,6 +366,7 @@ allTplAndDataPromise.then(
           let ccIndex = Object.keys(ccRatePairs).indexOf(cc);
           // console.log(ccIndex); // YES this returns 32 indices
           cr = Object.values(ccRatePairs)[ccIndex];
+          console.log(cr);
           
           dropDownView[cc] = {currencyCode: ccAll, currencyName: cnAll, currencyRate: cr, minorUnit: minorUnit}  // dropDownView contains # decimals for later calculation
           // with [cc] it does them all, but makes objects with the cc as the key
@@ -388,7 +390,7 @@ allTplAndDataPromise.then(
     let currencyCode = {};
     let currencyName = {};
     let currencyRate = {};
-    let minorUnit = '';
+    // let minorUnit = '';
 
     for (i = 0; i < dropDownValues.length; i++){
       currencyCode = dropDownValues[i]['currencyCode']; 
