@@ -56,7 +56,6 @@
 
     <div class="container-fluid">
 
-
       <!-- Checkboxes -->
         
       <div class="row"> <!-- open row for instructions -->
@@ -74,7 +73,23 @@
       <!-- open row for checkboxes--> 
         <!-- Placeholder div for mustache chooseCountriesTemplate -->
         <div class="form-group row justify-content-center" id="chooseCountries"></div>      
-    <!-- close row for check boxes-->
+      <!-- close row for check boxes-->
+
+      <!-- open row for base country -->
+          <!-- Dropdown to select base country -->
+          <div class="row d-flex">
+            <div class="col">
+                <div class="form-inline justify-content-center">
+                <p class="align-top" id="countrySelect"></p>
+                </div>
+            </div>
+          </div>
+      <!-- close row for base country select -->
+      <!-- open row for show conversions button -->      
+        <div class="form-group row justify-content-center">
+          <button class="button form-control bg-success text-light rounded col-sm-8 col-md-4" id="setBaseCountryBtn">Show Conversions</button>
+        </div>
+      <!-- close row for show conversions button -->
 
      <!-- the nav controlling the panes -->
     <nav class="nav nav-tabs nav-justified" role="tablist">
@@ -83,14 +98,12 @@
     </nav>
 
     <!-- The panes -->
-    <div class="tab-content border border-top-0 rounded-bottom px-3"> 
+    <div class="tab-content border border-top-0 rounded-bottom px-3"> <!-- open panes -->
 
-    <!-- Tab Pane 1 - convert specific amount by Base Country -->
-
-      <!-- Text box to enter amount to convert (no mustache) -->
-      <div class="tab-pane active" id="byBase" role="tabpanel" aria-labelledby="byBase-tab">
+      <!-- Tab Pane 1 - convert specific amount by Base Country -->
+      <div class="tab-pane active" id="byBase" role="tabpanel" aria-labelledby="byBase-tab"> <!-- Open Pane 1 (tab) -->
+        <!-- Text box to enter amount to convert (no mustache) -->
         <div class="container"> <!-- open container for convert by Base Country -->
-      
           <div class="row d-flex mb-4 mt-4">
             <div  class="col">
               <div class="form-inline justify-content-center was-validated">
@@ -101,105 +114,32 @@
               </div>
             </div>
           </div>
+       </div> <!-- close container for convert by Base Country -->
 
-          <!-- Dropdown to select base country -->
-          <div class="row d-flex">
+        <!-- Bootstrap card created with cardTemplate.html -->    
+        <div class="row" id="cardsPlaceholder"></div>   
+
+        <div class='container'> <!-- open container for scroll to top -->
+          <div class="row">
             <div class="col">
-                <div class="form-inline justify-content-center">
-                <p class="align-top" id="countrySelect"></p>
-                </div>
+              <a href="#" data-scroll-to="body" text-align="center">Scroll to Top</button></p>
             </div>
           </div>
-      
-          <div class="form-group row justify-content-center">
-            <button class="button form-control bg-success text-light rounded col-sm-8 col-md-4" id="setBaseCountryBtn">Show Conversions</button>
-          </div>
+        </div> <!-- close container for scroll to top -->
 
-    <!-- Bootstrap card created with cardTemplate.html -->    
-      <div class="row" id="cardsPlaceholder"></div>   
+      </div> <!-- close Pane 1 (tab) -->
 
-    </div> <!-- close container for first tab -->
-  </div> <!-- close first tab pane -->
+      <!-- Tab Pane 2 - create grid of country conversions -->
 
-  <!-- Tab Pane 2 - create grid of country conversions -->
+      <div class="tab-pane" id="grid-tab" role="tabpanel" aria-labelledby="grid-tab"> <!-- Open Pane 2 (tab) -->
+        <div class="container"> <!-- open container for tab 2 -->
+          <label for="chosenCountries" class = "sr-only">Select Countries for Currency Conversion:</label>
+          <!-- open row for grid -->
+          <div class="row d-flex justify-content-center" id="gridT"></div>
+        </div> <!-- close container for tab 2 (grid) -->
+      </div> <!-- close Pane 1 (tab) -->
 
-  <div class="tab-pane" id="grid" role="tabpanel" aria-labelledby="grid-tab">
-    <div class="container"> <!-- open container for tab 2 -->
-      <label for="chosenCountries" class = "sr-only">Select Countries for Currency Conversion:</label>
-  
-      <div class="form-check form-check-inline col col-md-4 col-lg-3 border border-secondary mt-4">
-        <div class="custom-control custom-switch" >
-          <input type="checkbox" class="custom-control-input" checked name="cntry" value='USD' id='countryUSD' data-toggle="collapse" data-target=".usd-collapse" aria-expanded="true" aria-controls="usd-row">
-          <label for='countryUSD' class="custom-control-label">USD toggle</label>        
-        </div> 
-      </div>
-        <div class="form-check form-check-inline col col-md-4 col-lg-3 border border-secondary">
-        <div class="custom-control custom-switch" >
-          <input type="checkbox" class="custom-control-input" checked name="cntry" value='CAD' id='countryCAD' data-toggle="collapse" data-target=".cad-collapse" aria-expanded="true" aria-controls="cad-row">
-          <label for='countryCAD' class="custom-control-label">CAD toggle</label>        
-        </div> 
-      </div>
-        <div class="form-check form-check-inline col col-md-4 col-lg-3 border border-secondary">
-        <div class="custom-control custom-switch" >
-          <input type="checkbox" class="custom-control-input" name="cntry" value='NZD' id='countryNZD' data-toggle="collapse" data-target=".nzd-collapse" aria-expanded="false" aria-controls="nzd-row">
-          <label for='countryNZD' class="custom-control-label">NZD toggle</label>        
-        </div> 
-      </div>
-            
-      <table data-role="table" data-mode="columntoggle"  class="table table-condensed table-hover table-sm" >
-          <caption>Horizontal/vertical lookup table for conversions between countries</caption>
-
-            <tr>
-              <th scope="col"></th>
-              <th scope="col" class=" show usd-collapse" id="usd-col">
-                <p>USD</p>
-              </th>
-              <th scope="col" class=" show cad-collapse" id="cad-col" >
-                <p>CAD</p>
-              </th>
-              <th scope="col" class=" collapse nzd-collapse" id="nzd-col">
-                <p>NZD</p>
-              </th>
-              
-            </tr>
-          <!-- NZD is hidden by default, USD & CAD are visible by default  -->
-          <!-- All tds with values for NZD must be class collapse  -->
-          <!-- All tds with values for USD & CAD are class show by default -->
-          <tbody>
-            <tr class=" border show usd-collapse" id="usd-row">
-              <th scope="row">USD</th>
-              <td class="show usd-collapse">1</td>
-              <td class="show cad-collapse">2</td>
-              <td class="collapse nzd-collapse">4</td>
-            </tr>
-            <tr class=" border show cad-collapse" id="cad-row">
-              <th scope="row" >CAD</th>
-              <td class="show usd-collapse">.5</td>
-              <td class="show cad-collapse">1</td>
-              <td class="collapse nzd-collapse">.33</td>
-            </tr>
-            <tr class="border collapse nzd-collapse" id="nzd-row">
-              <th scope="row">NZD</th>
-              <td class="show usd-collapse">.25</td>
-              <td class="show cad-collapse">3</td>
-              <td class="collapse nzd-collapse">1</td>
-            </tr>
-            
-          </tbody>
-        </table>
-      </div> <!-- close container for tab 2 (grid) -->
-
-
-
-  <div class='container'>
-    <div class="row">
-      <div class="col">
-        <a href="#" data-scroll-to="body" text-align="center">Scroll to Top</button></p>
-
-      </div>
-    </div>
-  </div>
-
+    </div> <!-- close the panes -->
 
   <!-- Include Bootstrap JavaScript from CDNs -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -289,9 +229,15 @@ const checkboxTplPromise = $.ajax({
   dataType: 'html',
   cache: false
 });
+const gridTemplate = $.ajax({
+  url: './gridTemplate.html',
+  method: 'GET',
+  dataType: 'html',
+  cache: false
+});
 
 // a promise that returns an array with the template in [0] and the data (view) in [1]
-allTplAndDataPromise = Promise.all([tplPromise, dataPromise, cardTplPromise,dropdownTplPromise,dropdownTplData,checkboxTplPromise]); 
+allTplAndDataPromise = Promise.all([tplPromise, dataPromise, cardTplPromise,dropdownTplPromise,dropdownTplData,checkboxTplPromise,gridTemplate]); 
 
 // Use .then operator to take action now that the promises are all resolved by the Promise.all
 allTplAndDataPromise.then(
@@ -302,9 +248,9 @@ allTplAndDataPromise.then(
     myCardTemplate = xArray[2];
     ddTemplate = xArray[3]; // template for dropdown
     allCountryView = xArray[4]; // data file with all countries and codes
-    console.log(allCountryView);
     cbTemplate = xArray[5]; // template for checkboxes
-    
+    gTemplate = xArray[6]; //template for grid
+
     // ********************** //
     //   path for aCard view: //
     // ***********************//
@@ -344,6 +290,12 @@ allTplAndDataPromise.then(
         // --> xArray[5] (Promise.then)
         // --> cbTemplate = xArray[5]
 
+    // path for grid template
+      // gridTemplate.html (AJAX)
+        // --> gridTplPromise from chooseCountriesTemplate.html
+        // --> xArray[6] (Promise.then)
+        // --> gTemplate = xArray[6]
+
     // for every country code from exchangerate we want to add the alphabeticCode from allCountryView. e.g. loop through exchangerate. exchangerate = ccRatePairs
 
     ccRatePairs = xArray[1].rates; // ccRatePairs now only has the country code/rate pairs. But we'll be adding this data to the new object.
@@ -366,7 +318,6 @@ allTplAndDataPromise.then(
           let ccIndex = Object.keys(ccRatePairs).indexOf(cc);
           // console.log(ccIndex); // YES this returns 32 indices
           cr = Object.values(ccRatePairs)[ccIndex];
-          console.log(cr);
           
           dropDownView[cc] = {currencyCode: ccAll, currencyName: cnAll, currencyRate: cr, minorUnit: minorUnit}  // dropDownView contains # decimals for later calculation
           // with [cc] it does them all, but makes objects with the cc as the key
@@ -434,13 +385,13 @@ allTplAndDataPromise.then(
       for(const c of cc){ // Look up each country code and get it's rate
       
         let aRate = {};  //make an empty Object
-        aRate.country = c;  // populate aRate with the 5 cardCountries codes
+        aRate.country = c;  // populate aRate with the cardCountries codes
 
-      // loop through the allView looking for the 5 countries
+      // loop through the allView looking for the countries
       // Find the index of each, and set currencyName to the acn from that index
       for (i=0; i < allView.length; i++){
         if (allView[i].acc == c){
-          myIndex = i; // now I know the index where the 5 countries are
+          myIndex = i; // now I know the index where the countries are
           aRate.currencyName = allView[myIndex].acn;
           aRate.minorUnit = allView[myIndex].mu; //aRate.minorUnit is right
         }
@@ -448,7 +399,7 @@ allTplAndDataPromise.then(
         // Populate the rate, adjusted for the desired cardBase 
         // Multiplied by convertAmount, the number they type into the texbox
       
-        console.log(`convertAmount as of line 318 is: ${convertAmount}`);
+        // console.log(`convertAmount as of line 318 is: ${convertAmount}`);
 
         // MAKE TOFIXED GO TO MINOR UNIT!!!
         aRate.rate = (convertAmount*((myView.rates[c])/myView.rates[cardBase])).toFixed(aRate.minorUnit);
@@ -459,7 +410,7 @@ allTplAndDataPromise.then(
      
       // copy array created in previous loop
       countries = card;
-      
+     
       // create a view called aCard to create each card with the template
       // Dorothy Rendon:
       // That was to build the entire card (a header with base country, card #, base currency) AND all the country rates (in 'countries') with one Mustache template and view.  So the matching template loops over 'countries' and creates the header with the key/value pairs. I think I was trying to get you into looping with Mustache.
@@ -470,7 +421,9 @@ allTplAndDataPromise.then(
         "cardB": cardBaseCurrencyName,
         "convertAmount": convertAmount
       }
+      // render mustache to make cards
       $('#cardsPlaceholder').append(Mustache.render(myCardTemplate, aCard));
+
 
       //===========================//
       //   make cards dismissable  //
@@ -519,6 +472,9 @@ allTplAndDataPromise.then(
       });
 
       makecard(cardNo,cardCountries);
+
+      // Render mustache to populate grid
+      $('#gridT').append(Mustache.render(gTemplate, aCard))
       
       // Move focus to the most recent card created
       $("#card" + cardNo).focus();

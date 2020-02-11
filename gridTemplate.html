@@ -1,0 +1,23 @@
+<!-- template string -->
+
+{{#countries}}
+<table data-role="table" data-mode="columntoggle"  class="table table-condensed table-hover table-sm" >
+  <caption>Horizontal/vertical lookup table for conversions between countries</caption>
+
+    <tr>
+      <th scope="col"></th>
+      <th scope="col" class=" show {{currencyCode}}-collapse" id="{{currencyCode}}-col">
+        <p>{{currencyCode}}</p>
+      </th>
+      
+    </tr>
+  
+  <tbody>
+    <tr class=" border show {{currencyCode}}-collapse" id="{{currencyCode}}-row">
+      <th scope="row">{{currencyCode}}</th>
+      <td class="show {{currencyCode}}-collapse">{{rate}}</td>
+    </tr>
+    
+  </tbody>
+</table>
+{{/countries}}
