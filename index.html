@@ -102,7 +102,7 @@
       <div class="tab-content border border-top-0 rounded-bottom px-3"> <!-- open panes -->
 
         <!-- Tab Pane 1 - convert specific amount by Base Country -->
-        <div class="tab-pane active" id="byBase" role="tabpanel" aria-labelledby="byBase-tab"> <!-- Open Pane 1 (tab) -->
+        <div class="tab-pane" id="byBase" role="tabpanel" aria-labelledby="byBase-tab"> <!-- Open Pane 1 (tab) -->
           <!-- Text box to enter amount to convert (no mustache) -->
           <div class="container"> <!-- open container for convert by Base Country -->
             <div class="row d-flex mb-4 mt-4">
@@ -121,26 +121,26 @@
           <div class="container">
             <div class="row" id="cardsPlaceholder"></div>
           </div>  
-          
-          <div class='container'> <!-- open container for scroll to top -->
+          <!-- open container for scroll to top -->
+          <div class='container'> 
             <div class="row">
               <div class="col">
-                <a href="#" data-scroll-to="body" text-align="center">Scroll to Top</button></p>
+                <a href="#" data-scroll-to="body" text-align="center">Scroll to Top</a></p>
               </div>
             </div>
-          </div> <!-- close container for scroll to top -->
+          </div> 
+          <!-- close container for scroll to top -->
 
         </div> <!-- close Pane 1 (tab) -->
 
         <!-- Tab Pane 2 - create grid of country conversions -->
-
-        <div class="tab-pane" id="grid" role="tabpanel" aria-labelledby="byGrid-tab"> <!-- Open Pane 2 (tab) -->
+        <div class="tab-pane active" id="grid" role="tabpanel" aria-labelledby="byGrid-tab"> <!-- Open Pane 2 (tab) -->
           <div class="container"> <!-- open container for tab 2 -->
             <label for="chosenCountries" class = "sr-only">Select Countries for Currency Conversion:</label>
             <!-- open row for grid -->
             <div class="row d-flex justify-content-center" id="gridT"></div>
           </div> <!-- close container for tab 2 (grid) -->
-        </div> <!-- close Pane 1 (tab) -->
+        </div> <!-- close Pane 2 (tab) -->
 
       </div> <!-- close the panes -->    
 
