@@ -2,19 +2,22 @@
 
 <table data-role="table" data-mode="columntoggle"  class="table table-condensed table-hover table-sm" >
   <caption>Horizontal/vertical lookup table for conversions between countries</caption>
-
+  
   {{#countries}}
-    <!-- <tr>
-      <th scope="col"></th>
-      <th scope="col" class="show {{country}}-collapse" id="{{country}}-col">
+  <thead class="">
+    <tr>
+      <th scope="col" class="border border-success"></th>
+      <th scope="col" class="show {{country}}-collapse border border-danger" id="{{country}}-col">
         <p>{{country}}</p>
       </th>
-    </tr> -->
- 
+    </tr>
+  </thead>
+  <tbody>
     <tr class="border show {{country}}-collapse" id="{{country}}-row">
       <td scope="row">{{country}}</td>
-      <td class="show {{country}}-collapse">Rate is: {{rate}}</td>
+      <td class="show {{country}}-collapse">{{rate}}</td>
     </tr>
+  </tbody> 
 
   {{/countries}}
 </table>
