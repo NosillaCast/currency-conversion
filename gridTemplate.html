@@ -1,22 +1,20 @@
 <!-- template string -->
 
-{{#countries}}
 <table data-role="table" data-mode="columntoggle"  class="table table-condensed table-hover table-sm" >
   <caption>Horizontal/vertical lookup table for conversions between countries</caption>
 
-    <tr>
+  {{#countries}}
+    <!-- <tr>
       <th scope="col"></th>
-      <th scope="col" class=" show {{currencyCode}}-collapse" id="{{currencyCode}}-col">
-        <p>{{currencyCode}}</p>
+      <th scope="col" class="show {{country}}-collapse" id="{{country}}-col">
+        <p>{{country}}</p>
       </th>
+    </tr> -->
+ 
+    <tr class="border show {{country}}-collapse" id="{{country}}-row">
+      <td scope="row">{{country}}</td>
+      <td class="show {{country}}-collapse">Rate is: {{rate}}</td>
     </tr>
-  
-  <tbody>
-    <tr class=" border show {{currencyCode}}-collapse" id="{{currencyCode}}-row">
-      <th scope="row">{{currencyCode}}</th>
-      <td class="show {{currencyCode}}-collapse">{{rate}}</td>
-    </tr>
-    
-  </tbody>
+
+  {{/countries}}
 </table>
-{{/countries}}
