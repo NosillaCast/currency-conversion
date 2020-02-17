@@ -1,0 +1,30 @@
+/*************************
+* VARIABLE DEFINITIONS   *
+*************************/
+var myTemplate = {};
+var myView = {};
+var allTplAndDataPromise = [];
+var countryCodes = [];
+var exchangeRates = [];
+var countryRates = [];
+var baseCurrency = "USD";
+var tempView = [];
+// var finalView = []; //  view to make the cards
+var allView = []; // view to make the dropdown with all countries
+var card = [];
+var countryCode = {};
+var cardNumber = {};
+var templPlaceholder = '';
+var aCard = {};
+var aRow = {};
+let countries = [];
+let row = []; // array to hold row information for grid?
+var cardBase = ""; // the base country chosen for each card
+var rowBase = ""; // the base country for a given row in the grid
+var acn = ""; // holding place for currencyName to make chooseCountryView
+var acc = ""; // holding place for allCountryCode to make chooseCountryView
+function closeCard(){};
+var ccRatePairs = '';
+var aDropDown = {};
+var aCheckbox = {};
+var convertAmount = ''; // the value they type into the textbox; amount to convert

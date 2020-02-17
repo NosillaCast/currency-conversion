@@ -1,0 +1,60 @@
+<div class="form-check form-check-inline col col-md-4 col-lg-3 border border-secondary mt-4">
+        <div class="custom-control custom-switch" >
+          <input type="checkbox" class="custom-control-input" checked name="cntry" value='USD' id='countryUSD' data-toggle="collapse" data-target=".usd-collapse" aria-expanded="true" aria-controls="usd-row">
+          <label for='countryUSD' class="custom-control-label">USD toggle</label>        
+        </div> 
+      </div>
+        <div class="form-check form-check-inline col col-md-4 col-lg-3 border border-secondary">
+        <div class="custom-control custom-switch" >
+          <input type="checkbox" class="custom-control-input" checked name="cntry" value='CAD' id='countryCAD' data-toggle="collapse" data-target=".cad-collapse" aria-expanded="true" aria-controls="cad-row">
+          <label for='countryCAD' class="custom-control-label">CAD toggle</label>        
+        </div> 
+      </div>
+        <div class="form-check form-check-inline col col-md-4 col-lg-3 border border-secondary">
+        <div class="custom-control custom-switch" >
+          <input type="checkbox" class="custom-control-input" name="cntry" value='NZD' id='countryNZD' data-toggle="collapse" data-target=".nzd-collapse" aria-expanded="false" aria-controls="nzd-row">
+          <label for='countryNZD' class="custom-control-label">NZD toggle</label>        
+        </div> 
+      </div>
+            
+      <table data-role="table" data-mode="columntoggle"  class="table table-condensed table-hover table-sm" >
+        <caption>Horizontal/vertical lookup table for conversions between countries</caption>
+
+          <tr>
+            <th scope="col"></th>
+            <th scope="col" class=" show usd-collapse" id="usd-col">
+              <p>USD</p>
+            </th>
+            <th scope="col" class=" show cad-collapse" id="cad-col" >
+              <p>CAD</p>
+            </th>
+            <th scope="col" class=" collapse nzd-collapse" id="nzd-col">
+              <p>NZD</p>
+            </th>
+            
+          </tr>
+        <!-- NZD is hidden by default, USD & CAD are visible by default  -->
+        <!-- All tds with values for NZD must be class collapse  -->
+        <!-- All tds with values for USD & CAD are class show by default -->
+        <tbody>
+          <tr class=" border show usd-collapse" id="usd-row">
+            <th scope="row">USD</th>
+            <td class="show usd-collapse">1</td>
+            <td class="show cad-collapse">2</td>
+            <td class="collapse nzd-collapse">4</td>
+          </tr>
+          <tr class=" border show cad-collapse" id="cad-row">
+            <th scope="row" >CAD</th>
+            <td class="show usd-collapse">.5</td>
+            <td class="show cad-collapse">1</td>
+            <td class="collapse nzd-collapse">.33</td>
+          </tr>
+          <tr class="border collapse nzd-collapse" id="nzd-row">
+            <th scope="row">NZD</th>
+            <td class="show usd-collapse">.25</td>
+            <td class="show cad-collapse">3</td>
+            <td class="collapse nzd-collapse">1</td>
+          </tr>
+          
+        </tbody>
+      </table>

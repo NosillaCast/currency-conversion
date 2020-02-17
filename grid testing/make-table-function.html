@@ -1,0 +1,98 @@
+/*********************************
+    * function to make grid rows *
+    ******************************/
+    
+    var makeRow = function(r,cc){
+      // create an empty array that will hold the country: rate pairs
+      countries = [];
+      row = [];
+      
+      for(const c of cc){ // Look up each country code and get it's rate
+      
+        let aRow = {};  //make an empty Object
+        aRow.country = c;  // populate aRate with the cardCountries codes
+
+      // loop through the allView looking for the countries
+      // Find the index of each, and set currencyName to the acn from that index
+      for (i=0; i < allView.length; i++){
+        if (allView[i].acc == c){
+          myIndex = i; // now I know the index where the countries are
+          aRow.currencyName = allView[myIndex].acn;
+          aRow.minorUnit = allView[myIndex].mu; 
+        }
+      }
+        // Populate the rate, adjusted for the desired cardBase 
+        // DON'T use convertAmount because we want it to stay at 1
+
+        // Make toFixed go to MinorUnit which is the # of decimals for that currency
+        aRow.rate = ((myView.rates[c])/myView.rates[rowBase]).toFixed(aRow.minorUnit);
+
+        //  MAYBE DON'T DO THIS FOR ROWS because we just want the one row, right?
+        // so flipping a switch would create a row for that country
+        // but wait, maybe we DO need to push aRow into row so row has the info...
+        // push the countries, rates and currency names into the card
+        row.push(aRow); 
+      }
+     
+      // copy array created in previous loop
+      let rowCountries = row; // need to define me globally?
+     
+      // create a view called aCard to create each card with the template
+      // Dorothy Rendon:
+      // That was to build the entire card (a header with base country, card #, base currency) AND all the country rates (in 'countries') with one Mustache template and view.  So the matching template loops over 'countries' and creates the header with the key/value pairs. I think I was trying to get you into looping with Mustache.
+      aRow = {
+        row,
+        "countryCode": rowBase,
+        "rowB": rowBaseCurrencyName,
+      }
+      // render mustache to make cards
+      $('#cardsPlaceholder').append(Mustache.render(myCardTemplate, aCard));
+
+    
+    //  Create an array of the countries for the cards
+    // var cardCountries = ["RUB", "PHP", "DKK", "SEK", "GBP"];
+
+    // Get the value of country selection to put into cardBase
+    // also get the checked countries and push them into cardCountries
+    var cardNo = '0';
+    $('#setBaseCountryBtn').click(function(){
+      <!-- cardNo++
+      
+      convertAmount = $('#tbVal').val();
+      if (!(convertAmount > 0)){
+        // const $a = $('<div>').text("Conversion amount must be greater than zero.")
+        // $a.addClass('alert alert-danger');
+        // $a.alert();
+        alert("Conversion amount must be a numeric value greater than zero.")
+         
+        return
+      } -->
+
+      // Find country code from dropdown (this is a 3-letter string)
+      <!-- cardBase = ($('#countrySelected option:selected').val()); -->
+
+      // Find country code from toggle (3-letter string)
+     <!-- cardRow =   CONFUSING because we already know which toggles have been flipped -->
+      
+      for (i=0; i < allView.length; i++){
+        if (allView[i].acc == cardBase){
+          myIndex = i; // now I know the index where the 5 countries are
+          cardBaseCurrencyName = allView[myIndex].acn;
+        }
+      
+      }
+      // cardCountries needs to be populated by checkboxes
+      // so if checked .value cardCountries.push[value] "each"
+      // do it on the add card button
+      <!-- var cardCountries = [];
+      $.each($("input[name='cntry']:checked"), function(){
+          cardCountries.push($(this).val());
+      }); -->
+
+      <!-- makecard(cardNo,cardCountries); -->
+
+      // Render mustache to populate grid
+      $('#gridT').append(Mustache.render(gTemplate, aCard))
+     
+      
+    });

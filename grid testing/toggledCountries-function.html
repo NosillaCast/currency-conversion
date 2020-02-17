@@ -1,0 +1,6 @@
+var toggledCountries = function(){
+  var cardCountries = []; // make this a global variable!
+  $.each($("input[name='cntry']:checked), function(){
+    cardCountries.push($(this.val()));
+  });
+}

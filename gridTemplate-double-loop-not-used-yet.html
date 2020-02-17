@@ -1,0 +1,29 @@
+<!-- template string -->
+
+<table data-role="table" data-mode="columntoggle" class="table table-condensed table-hover table-sm" >
+  <caption>Horizontal/vertical lookup table for conversions between countries</caption>
+  
+  
+  <thead class="">
+    <tr>
+      <th scope="col" class="border border-success"></th>
+      {{#countries}}
+      <th scope="col" class="show {{country}}-collapse border border-danger" id="{{country}}-col">
+        <p>{{country}}</p>
+        {{/countries}}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#countries}}
+    <!-- a base currency exists so all we get is the row counries against that base. There's nothing to create each country against each other -->
+    <tr class="border show {{country}}-collapse" id="{{country}}-row">
+      <td scope="row">{{currencyName}} ({{country}})</td>
+      <td class="show {{country}}-collapse">{{rate}}</td>
+    </tr>
+    {{/countries}}
+  </tbody> 
+
+  
+</table>
+
