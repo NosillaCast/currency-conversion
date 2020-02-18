@@ -3,7 +3,7 @@
 <table data-role="table" data-mode="columntoggle"  class="table table-condensed table-hover table-sm" >
   <caption>Horizontal/vertical lookup table for conversions between countries</caption>
 
-  {{#countries}}
+  {{#dropDownValues}}
     <!-- <tr>
       <th scope="col"></th>
       <th scope="col" class="show {{country}}-collapse" id="{{country}}-col">
@@ -11,10 +11,10 @@
       </th>
     </tr> -->
  
-    <tr class="border show {{country}}-collapse" id="{{country}}-row">
-      <td scope="row">{{country}}</td>
-      <td class="show {{country}}-collapse">Rate is: {{rate}}</td>
+    <tr class="border show {{currencyCode}}-collapse" id="{{currencyCode}}-row">
+      <td scope="row">{{currencyCode}}</td>
+      <td class="show {{currencyCode}}-collapse">Rate is: {{currencyRate}}</td>
     </tr>
 
-  {{/countries}}
+  {{/dropDownValues}}
 </table>

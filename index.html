@@ -353,6 +353,7 @@ allTplAndDataPromise.then(
       currencyCode = dropDownValues[i]['currencyCode']; 
       currencyName = dropDownValues[i]['currencyName'];
       currencyRate = dropDownValues[i]['currencyRate'];
+      minorUnit = dropDownValues[i]['minorUnit'];
       
       // build the dropdown
       aDropDown = {
@@ -360,6 +361,7 @@ allTplAndDataPromise.then(
           "currencyCode": currencyCode,
           "currencyName": currencyName,
           "currencyRate": currencyRate,
+          "minorUnit": minorUnit,
       }
      
     }
@@ -478,14 +480,14 @@ allTplAndDataPromise.then(
       });
 
       makecard(cardNo,cardCountries);
-
-      // Render mustache to populate grid
-      $('#gridT').append(Mustache.render(gTemplate, aCard))
       
       // Move focus to the most recent card created
       $("#card" + cardNo).focus();
       
     });
+
+    // Render mustache to populate grid
+    $('#gridT').append(Mustache.render(gTemplate, aDropDown))
 
     /**************************************************
     * Script to check all the boxes (and uncheck all) *
