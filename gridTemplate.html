@@ -17,7 +17,9 @@
     <tbody>
       <tr class="border show {{currencyCode}}-collapse" id="{{currencyCode}}-row">
         <td scope="row">{{currencyCode}}</td>
-        <td class="show {{currencyCode}}-collapse">Rate is: {{currencyRate}}</td>
+        {{#dropDownValues}}
+          <td class="show {{currencyCode}}-collapse">{{currencyRate}}</td>
+        {{/dropDownValues}}
       </tr>
     </tbody>
   {{/dropDownValues}}
