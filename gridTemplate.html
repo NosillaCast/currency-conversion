@@ -4,17 +4,21 @@
   <caption>Horizontal/vertical lookup table for conversions between countries</caption>
 
   {{#dropDownValues}}
-    <!-- <tr>
-      <th scope="col"></th>
-      <th scope="col" class="show {{country}}-collapse" id="{{country}}-col">
-        <p>{{country}}</p>
+    <thead>
+      <tr>
+        <th scope="col" class="border"></th>
+        {{#dropDownValues}}
+          <th scope="col" class="show {{currencyCode}}-collapse" id="{{currencyCode}}-col">
+            <p>{{currencyCode}}</p>
+        {{/dropDownValues}}
       </th>
-    </tr> -->
- 
-    <tr class="border show {{currencyCode}}-collapse" id="{{currencyCode}}-row">
-      <td scope="row">{{currencyCode}}</td>
-      <td class="show {{currencyCode}}-collapse">Rate is: {{currencyRate}}</td>
     </tr>
-
+    </thead>
+    <tbody>
+      <tr class="border show {{currencyCode}}-collapse" id="{{currencyCode}}-row">
+        <td scope="row">{{currencyCode}}</td>
+        <td class="show {{currencyCode}}-collapse">Rate is: {{currencyRate}}</td>
+      </tr>
+    </tbody>
   {{/dropDownValues}}
 </table>
