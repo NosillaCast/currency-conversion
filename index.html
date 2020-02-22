@@ -379,48 +379,29 @@ allTplAndDataPromise.then(
           rowBase.push($(this).val());
       });
       // rowBase = ["AUD", "THB", "BRL", "BGN", "CAD", "CZK", "DKK", "EUR", "HUF", "HKD", …]
+      // Push into rowBase at each index, the entire dropDownValues
     for(i = 0; i < rowBase.length; i++){
       allRows.push(
         [rowBase[i], dropDownValues]
-      )
-     
-    }
+      )};
+
+    // dropDownValues currency rates are by USD base rate. We need to reach inside each index for a top level currency code and make that the base rate.
+    // allRows[0][1][0]['currencyRate'] = (allRows[0][1][0]['currencyRate']/allRows[0][1][0]['currencyRate']).toFixed(allRows[0][1][1]['minorUnit'])
+    // changes the currencyRate for the 2nd element (not AUD but the next one) to a base rate of AUD - see Notability
+    // allRows[0][1][1]['currencyRate'] is AUD then dropDownView then the 2nd entry then its currencyRate
+    // we want to divide each currency rate by the base rate which is the first [0]
+
+    for (i=1; i < allRows[0][1].length; i++){
+      
+      let baseCR = allRows[0][1][0]['currencyRate'];
+      let thisCR = allRows[0][1][i]['currencyRate'];
+      let thisMU = allRows[0][1][i]['minorUnit'];
+      thisCR = (thisCR/baseCR).toFixed(thisMU);
+      // allRows[0][1][i]['currencyRate'] = (allRows[0][1][i]['currencyRate']/baseCR).toFixed(allRows[0][1][i]['minorUnit'])
+    } // this works but if the base currency is done first, all I'm doing is dividing by 1!  need an if statement that says if i = 0 (in this case) then skip and come back?
+    // MATH IS OFF BY A BIT??? BAHT S/B 20.88 BUT IT'S 20.95???
+
     console.log(allRows);
-      
-    
-
-    // We need to look up each rowBase in dropDownValues and make a new view with the values divided by the cr of the rowBase
-  //   var makeRows = function(rb){ // input is rowBase
-  //     // create an empty array that will hold the row values  
-  //     row = [];
-      
-  //     for(const c of rb){ // Look up each country code and get it's rate
-      
-  //       let aRow = {};  //make an empty Object
-  //       aRow.country = c;  // populate aRow with the country codes
-  //     // loop through dropDownValues country codes and plopping the entire object into aRow
-  //     for (i = 0; i > dropDownValues.length; i++){
-  //       aRow.contents = dropDownValues[i];
-  //     }
-  
-  //     // Populate the rate, adjusted for the desired cardBase 
-  //     // Multiplied by convertAmount, the number they type into the texbox
-    
-  //     // Use toFixed to set decimals to minorUnit for each country
-  //     // aRate.rate = (convertAmount*((myView.rates[c])/myView.rates[cardBase])).toFixed(aRate.minorUnit);
-
-  //     // push the countries, rates and currency names into the card
-  //     row.push(aRow);  // 
-  //     console.log(aRow);
-  //   }
-  
-  //   // copy array created in previous loop
-  //   let gridRows = [];
-  //   gridRows = row;
-  // }
-  // makeRows(rowBase, dropDownValues);
-
-
     
     // Render mustache to populate grid
     $('#gridT').append(Mustache.render(gTemplate, aDropDown))
