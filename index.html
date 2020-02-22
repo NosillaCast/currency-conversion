@@ -322,6 +322,7 @@ allTplAndDataPromise.then(
         let ccAll = allCountryView[i]['AlphabeticCode'];
         let minorUnit = allCountryView[i]['MinorUnit'];
         let cr = '';
+        let dr = '';
 
         // if ccAll == cc, then find the index of cc and use it to pull the rate from ccRatePairs
        
@@ -330,13 +331,13 @@ allTplAndDataPromise.then(
           // console.log(ccIndex); // YES this returns 32 indices
           cr = Object.values(ccRatePairs)[ccIndex];
           
-          dropDownView[cc] = {currencyCode: ccAll, currencyName: cnAll, currencyRate: cr, minorUnit: minorUnit}  
+          dropDownView[cc] = {currencyCode: ccAll, currencyName: cnAll, currencyRate: cr, minorUnit: minorUnit, displayRate: dr}  
           // with [cc] it does them all, but makes objects with the cc as the key. without [cc] it only keeps the last one
         }
       };
     };
 
-    // change the currencyRate values in dropDownView to the correct decimals
+    // Make the display the currencyRate values in dropDownView to the correct decimals
 
     // get the values from dropDownView (which is the cc,cn,cr) and sort by the country name
     // sort code learned from http://www.javascriptkit.com/javatutors/arraysort2.shtml
@@ -349,13 +350,10 @@ allTplAndDataPromise.then(
           return 1
       return 0 //default return value (no sorting)
     });
-
-    // console.log(dropDownValues[0]);
-    // console.log(`dropDownValues[0] is ${dropDownValues[0]}`);
     
     // round dropDownValues currencyRate to the minorUnit of each country
     for(i = 0; i < dropDownValues.length; i++){
-      dropDownValues[i]['currencyRate'] = (dropDownValues[i]['currencyRate']).toFixed(dropDownValues[i]['minorUnit']);
+      dropDownValues[i]['displayRate'] = (dropDownValues[i]['currencyRate']).toFixed(dropDownValues[i]['minorUnit']);
     }
       
     // build the view for the drop down by putting the array dropDownValues inside the object aDropDown, I can now loop over dropDownValues in my mustache templates for the drop down as well as my checkboxes and my grid.
@@ -382,7 +380,7 @@ allTplAndDataPromise.then(
       // Push into rowBase at each index, the entire dropDownValues
     for(i = 0; i < rowBase.length; i++){
       allRows.push(
-        [rowBase[i], dropDownValues]
+        [rowBase[i], [...dropDownValues]]
       )};
 
     // dropDownValues currency rates are by USD base rate. We need to reach inside each index for a top level currency code and make that the base rate.
@@ -392,21 +390,21 @@ allTplAndDataPromise.then(
     // we want to divide each currency rate by the base rate which is the first [0]
     
     // let's create a function to do the division
-    var convertToBase = function(i,br){
+    var convertToBase = function(i,br){ // i is the index, br is the base rate
       
     }
-
+    // allRows[0][1][0]['displayRate'] = '2.5'; this does change displayRate so it doesn't revert to dropDownValues truncated version
     for (i=1; i < allRows[0][1].length; i++){
        
       let baseCR = allRows[0][1][0]['currencyRate'];
       let thisCR = allRows[0][1][i]['currencyRate'];
       let thisMU = allRows[0][1][i]['minorUnit'];
-      thisCR = (thisCR/baseCR).toFixed(thisMU);
-      // allRows[0][1][i]['currencyRate'] = (allRows[0][1][i]['currencyRate']/baseCR).toFixed(allRows[0][1][i]['minorUnit'])
-    } // this works but if the base currency is done first, all I'm doing is dividing by 1!  need an if statement that says if i = 0 (in this case) then skip and come back?
-    // MATH IS OFF BY A BIT??? BAHT S/B 20.88 BUT IT'S 20.95???
+      let thisDR = (thisCR/baseCR).toFixed(thisMU);
+      allRows[0][1][i]['displayRate'] = thisDR;
+     
+    } 
 
-    console.log(allRows);
+    console.log(allRows[0][1]);
     
     // Render mustache to populate grid
     $('#gridT').append(Mustache.render(gTemplate, aDropDown))
