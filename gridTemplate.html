@@ -3,21 +3,25 @@
 <table data-role="table" data-mode="columntoggle"  class="table table-condensed table-hover table-sm" >
   <caption>Horizontal/vertical lookup table for conversions between countries</caption>
   
-  {{#countries}}
-  <thead class="">
-    <tr>
-      <th scope="col" class="border border-success"></th>
-      <th scope="col" class="show {{country}}-collapse border border-danger" id="{{country}}-col">
-        <p>{{country}}</p>
+    <thead>
+      <tr>
+        <th scope="col" class="border"></th>
+        {{#dropDownValues}}
+          <th scope="col" class="border show {{currencyCode}}-collapse" id="{{currencyCode}}-col">
+            <p class="text-center">{{currencyCode}}</p>
+        {{/dropDownValues}}
       </th>
     </tr>
-  </thead>
-  <tbody>
-    <tr class="border show {{country}}-collapse" id="{{country}}-row">
-      <td scope="row">{{country}}</td>
-      <td class="show {{country}}-collapse">{{rate}}</td>
-    </tr>
-  </tbody> 
+    </thead>
+    <tbody>
+      {{#dropDownValues}}
+        <tr class="border show {{currencyCode}}-collapse" id="{{currencyCode}}-row"> 
+            <td scope="row">{{currencyName}}: {{currencyCode}}</td>
+            {{#dropDownValues}}
+            <td class="border show {{currencyCode}}-collapse">{{currencyRate}}</td>
+            {{/dropDownValues}}
+        </tr>
+      {{/dropDownValues}}
+    </tbody>
 
-  {{/countries}}
 </table>
