@@ -390,9 +390,14 @@ allTplAndDataPromise.then(
     // changes the currencyRate for the 2nd element (not AUD but the next one) to a base rate of AUD - see Notability
     // allRows[0][1][1]['currencyRate'] is AUD then dropDownView then the 2nd entry then its currencyRate
     // we want to divide each currency rate by the base rate which is the first [0]
+    
+    // let's create a function to do the division
+    var convertToBase = function(i,br){
+      
+    }
 
     for (i=1; i < allRows[0][1].length; i++){
-      
+       
       let baseCR = allRows[0][1][0]['currencyRate'];
       let thisCR = allRows[0][1][i]['currencyRate'];
       let thisMU = allRows[0][1][i]['minorUnit'];
