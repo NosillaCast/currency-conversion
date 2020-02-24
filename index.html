@@ -6,7 +6,8 @@
 	<!-- Include Bootstrap 4 CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<!-- Include Font Awesome 4 -->
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  
   <title>Currency exchange</title>
   <!-- 
     Style to hide border on focus to cards 
@@ -156,7 +157,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/is_js/0.9.0/is.min.js" integrity="sha256-lnJeulOa3e5IO2EzHr8jKJ3CbT80MBwkS5a+n2ooIr4=" crossorigin="anonymous"></script>
 <!-- Include mustache.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.js" integrity="sha256-eWzD4VoILNfodzTHdCIMKX/k47LcM3hmpTfFhAR7Cj0=" crossorigin="anonymous"></script>
-
+<!-- import lodash library - required to make deep clones of arrays -->
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js" integrity="sha256-VeNaFBVDhoX3H+gJ37DpT/nTuZTdjYro9yBruHjVmoQ=" crossorigin="anonymous"></script>
 
 <!-- Create script here -->
 <script type='text/javascript'>
@@ -192,7 +194,8 @@ var acn = ""; // holding place for currencyName to make chooseCountryView
 var acc = ""; // holding place for allCountryCode to make chooseCountryView
 function closeCard(){};
 var ccRatePairs = '';
-var dropDownValues = '';
+var dropDownValues = [];
+var ddVdeepclone = [];
 var aDropDown = {};
 var aCheckbox = {};
 var convertAmount = ''; // the value they type into the textbox; amount to convert
@@ -360,7 +363,7 @@ allTplAndDataPromise.then(
     for(i = 0; i < dropDownValues.length; i++){
       dropDownValues[i]['displayRate'] = (dropDownValues[i]['currencyRate']).toFixed(dropDownValues[i]['minorUnit']);
     }
-      
+    
     // build the view for the drop down by putting the array dropDownValues inside the object aDropDown, I can now loop over dropDownValues in my mustache templates for the drop down as well as my checkboxes and my grid.
     aDropDown = {
       dropDownValues
@@ -382,12 +385,17 @@ allTplAndDataPromise.then(
           rowBase.push($(this).val());
       });
       // rowBase = ["AUD", "THB", "BRL", "BGN", "CAD", "CZK", "DKK", "EUR", "HUF", "HKD", …]
+      // make a deep clone of dropDownValues with lodash library
+      ddVdeepclone = _.cloneDeep(dropDownValues);
       // Push into rowBase at each index, the entire dropDownValues
+
     for(i = 0; i < rowBase.length; i++){
       allRows.push(
-        [rowBase[i], [...dropDownValues]] // shallow copy of dropDownValues but it's already PLN'd
+        [rowBase[i], ddVdeepclone]
       )};
-
+      // console.log(dropDownValues);
+      // console.log(ddVdeepclone);
+      console.log(allRows);
     // dropDownValues currency rates are by USD base rate. We need to reach inside each index for a top level currency code and make that the base rate.
     
    // Loop through allRows to convert each element to the base rate
