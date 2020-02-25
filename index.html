@@ -194,8 +194,9 @@ var acn = ""; // holding place for currencyName to make chooseCountryView
 var acc = ""; // holding place for allCountryCode to make chooseCountryView
 function closeCard(){};
 var ccRatePairs = '';
+let dropDownView = {}; // when functioning this will have as keys all of the currency codes (cc) and with it, currency codes (cc): currency names (cn), cc: rates and # decimals (minorUnit) and maybe more
 var dropDownValues = [];
-var ddVdeepclone = [];
+let gridView = {};
 var aDropDown = {};
 var aCheckbox = {};
 var convertAmount = ''; // the value they type into the textbox; amount to convert
@@ -315,8 +316,6 @@ allTplAndDataPromise.then(
     ccRatePairs = xArray[1].rates; // ccRatePairs now only has the country code/rate pairs. But we'll be adding this data to the new object.
     // console.log(`the keys in ccRatePairs is ${Object.keys(ccRatePairs)}`);
 
-    dropDownView = {}; // when functioning this will have as keys all of the currency codes (cc) and with it, currency codes (cc): currency names (cn), cc: rates and # decimals (minorUnit) and maybe more
-  
     for (const cc in ccRatePairs){
       // console.log(Object.keys(ccRatePairs)); // this is all the cc's in an array created by Object.keys
       // console.log(Object.values(ccRatePairs)); // this is all the rates in an array created by Object.values
@@ -369,7 +368,6 @@ allTplAndDataPromise.then(
       dropDownValues
     }
      
-    // }
     // Render mustache to populate drop down menu
     $('#countrySelect').append(Mustache.render(ddTemplate, aDropDown));
     
@@ -384,20 +382,17 @@ allTplAndDataPromise.then(
     $.each($("input[name='cntry']:checked"), function(){
           rowBase.push($(this).val());
       });
-      // rowBase = ["AUD", "THB", "BRL", "BGN", "CAD", "CZK", "DKK", "EUR", "HUF", "HKD", …]
-      // make a deep clone of dropDownValues with lodash library
-      ddVdeepclone = _.cloneDeep(dropDownValues);
-      // Push into rowBase at each index, the entire dropDownValues
 
+    // rowBase = ["AUD", "THB", "BRL", "BGN", "CAD", "CZK", "DKK", "EUR", "HUF", "HKD", …]
+    // push a deep clone of dropDownValues with lodash library _.cloneDeep(dropDownValues);
+
+      
+    // Push into rowBase at each index, and the deep clone
     for(i = 0; i < rowBase.length; i++){
       allRows.push(
-        [rowBase[i], ddVdeepclone]
+        [rowBase[i], _.cloneDeep(dropDownValues)]
       )};
-      // console.log(dropDownValues);
-      // console.log(ddVdeepclone);
-      console.log(allRows);
-    // dropDownValues currency rates are by USD base rate. We need to reach inside each index for a top level currency code and make that the base rate.
-    
+
    // Loop through allRows to convert each element to the base rate
     for (j = 0; j < allRows.length; j++){
       // console.log(`j is ${j}`);
@@ -413,10 +408,32 @@ allTplAndDataPromise.then(
           // console.log(allRows[j][1][i]['displayRate']);
         }
     }
-    // console.log(allRows[0][1]);
+    // build a view from allRows pbs84 https://www.bartbusschots.ie/s/2019/10/19/pbs-84-of-x-objects-as-dictionaries-in-javascript-redux-update/
+   
+    for (const baseCode in allRows){ // index is 0,1,2?
+      for (let j = 0; j < allRows.length; j++){
+        // Declare internal variables
+        let baseCode = '';
+        let baseName = '';
+        let displayRates = [];
+        // find base country code and name
+        baseCode = allRows[j][0];
+        baseName = allRows[j][1][j]['currencyName'];
+        // For a given j, iterate through the countries to get their rates
+        for (i = 0; i < allRows.length; i++){
+          displayRates.push(allRows[j][1][i]['displayRate']);
+          // shove it all into gridView
+          gridView[baseCode] = {
+            baseCode: baseCode, 
+            baseName: baseName,
+            displayRates};
+          };       
+      };
+    };
+    console.log(gridView);
     
     // Render mustache to populate grid
-    $('#gridT').append(Mustache.render(gTemplate, aDropDown))
+    $('#gridT').append(Mustache.render(gTemplate, gridView))
 
     // this pushes the currency name (called simply name) into the cards
     for (let i = 0; i < allCountryView.length; i++ ){
@@ -440,25 +457,24 @@ allTplAndDataPromise.then(
       
         let aRate = {};  //make an empty Object
         aRate.country = c;  // populate aRate with the cardCountries codes
-
-      // loop through the allView looking for the countries
-      // Find the index of each, and set currencyName to the acn from that index
-      for (i=0; i < allView.length; i++){
-        if (allView[i].acc == c){
-          myIndex = i; // now I know the index where the countries are
-          aRate.currencyName = allView[myIndex].acn;
-          aRate.minorUnit = allView[myIndex].mu; //aRate.minorUnit is right
+        // loop through the allView looking for the countries
+        // Find the index of each, and set currencyName to the acn from that index
+        for (i=0; i < allView.length; i++){
+          if (allView[i].acc == c){
+            myIndex = i; // now I know the index where the countries are
+            aRate.currencyName = allView[myIndex].acn;
+            aRate.minorUnit = allView[myIndex].mu; 
+          }
         }
-      }
-        // Populate the rate, adjusted for the desired cardBase 
-        // Multiplied by convertAmount, the number they type into the texbox
-      
-        // Use toFixed to set decimals to minorUnit for each country
-        aRate.rate = (convertAmount*((myView.rates[c])/myView.rates[cardBase])).toFixed(aRate.minorUnit);
+          // Populate the rate, adjusted for the desired cardBase 
+          // Multiplied by convertAmount, the number they type into the texbox
+        
+          // Use toFixed to set decimals to minorUnit for each country
+          aRate.rate = (convertAmount*((myView.rates[c])/myView.rates[cardBase])).toFixed(aRate.minorUnit);
 
-        // push the countries, rates and currency names into the card
-        card.push(aRate);  // 
-      }
+          // push the countries, rates and currency names into the card
+          card.push(aRate);  // 
+      };
      
       // copy array created in previous loop
       countries = card;
@@ -475,7 +491,6 @@ allTplAndDataPromise.then(
       }
       // render mustache to make cards
       $('#cardsPlaceholder').append(Mustache.render(myCardTemplate, aCard));
-
 
       //===========================//
       //   make cards dismissable  //
