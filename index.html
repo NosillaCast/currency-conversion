@@ -375,10 +375,11 @@ allTplAndDataPromise.then(
     // checkbox template but borrowing aDropDown data file
     $('#chooseCountries').append(Mustache.render(cbTemplate, aDropDown));
 
-    // Create a view with all the values in all the rows by base country 
-
-    // rowBase is an array with all the cc's
+    // ----------------------------------------------------------------- //
+    // Create a view with all the values in all the rows by base country //
+    // ----------------------------------------------------------------- //
     
+    // rowBase will be an array with all the cc's
     $.each($("input[name='cntry']:checked"), function(){
           rowBase.push($(this).val());
       });
@@ -386,8 +387,7 @@ allTplAndDataPromise.then(
     // rowBase = ["AUD", "THB", "BRL", "BGN", "CAD", "CZK", "DKK", "EUR", "HUF", "HKD", …]
     // push a deep clone of dropDownValues with lodash library _.cloneDeep(dropDownValues);
 
-      
-    // Push into rowBase at each index, and the deep clone
+    // Push into rowBase at each index, and the deep clones of dropDownValues
     for(i = 0; i < rowBase.length; i++){
       allRows.push(
         [rowBase[i], _.cloneDeep(dropDownValues)]
@@ -395,7 +395,6 @@ allTplAndDataPromise.then(
 
    // Loop through allRows to convert each element to the base rate
     for (j = 0; j < allRows.length; j++){
-      // console.log(`j is ${j}`);
       for (i = 0; i < allRows[j][1].length; i++){
           let baseCR = allRows[j][1][j]['currencyRate'];
           // console.log(`baseCR is ${baseCR}`);
@@ -408,12 +407,11 @@ allTplAndDataPromise.then(
           // console.log(allRows[j][1][i]['displayRate']);
         }
     }
-    // build a view from allRows pbs84 https://www.bartbusschots.ie/s/2019/10/19/pbs-84-of-x-objects-as-dictionaries-in-javascript-redux-update/
-   
-    for (const baseCode in allRows){ // index is 0,1,2?
+    // build a view called gridView from allRows
+    for (const baseCode in allRows){
       for (let j = 0; j < allRows.length; j++){
         // Declare internal variables
-        let baseCode = '';
+        let baseCode = [];
         let baseName = '';
         let displayRates = [];
         // find base country code and name
@@ -422,16 +420,20 @@ allTplAndDataPromise.then(
         // For a given j, iterate through the countries to get their rates
         for (i = 0; i < allRows.length; i++){
           displayRates.push(allRows[j][1][i]['displayRate']);
-          // shove it all into gridView
-          gridView[baseCode] = {
-            baseCode: baseCode, 
-            baseName: baseName,
-            displayRates};
-          };       
       };
+      // shove it all into gridView
+      gridView[baseCode] = {
+        baseCode: baseCode, 
+        baseName: baseName,
+        displayRates};
+      };       
     };
-    console.log(gridView);
-    
+    // This makes an array. Then you use forEach to loop through the array & call Mustache for each one to make the row. You access each object using the key from the Object.keys array & use THAT as the view. As: gridView[cntry]
+
+    // Object.keys(gridView).sort().forEach(function(cntry){ 
+    //   $('#gridT').append(Mustache.render(gTemplate, gridView))
+    // });
+
     // Render mustache to populate grid
     $('#gridT').append(Mustache.render(gTemplate, gridView))
 
@@ -476,7 +478,7 @@ allTplAndDataPromise.then(
           card.push(aRate);  // 
       };
      
-      // copy array created in previous loop
+      // create reference to array created in previous loop
       countries = card;
      
       // create a view called aCard to create each card with the template

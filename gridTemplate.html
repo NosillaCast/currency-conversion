@@ -6,22 +6,22 @@
     <thead>
       <tr>
         <th scope="col" class="border"></th>
-        {{#dropDownValues}}
-          <th scope="col" class="border show {{currencyCode}}-collapse" id="{{currencyCode}}-col">
-            <p class="text-center">{{currencyCode}}</p>
-        {{/dropDownValues}}
+        {{#gridView}}
+          <th scope="col" class="border show {{baseCode}}-collapse" id="{{baseCode}}-col">
+            <p class="text-center">{{baseCode}}</p>
+        {{/gridView}}
       </th>
     </tr>
     </thead>
     <tbody>
-      {{#dropDownValues}}
-        <tr class="border show {{currencyCode}}-collapse" id="{{currencyCode}}-row"> 
-            <td scope="row">{{currencyName}}: {{currencyCode}}</td>
-            {{#dropDownValues}}
-            <td class="border show {{currencyCode}}-collapse">{{displayRate}}</td>
-            {{/dropDownValues}}
+      {{#gridView}}
+        <tr class="border show {{baseCode}}-collapse" id="{{baseCode}}-row"> 
+            <td scope="row">{{baseName}}: {{baseCode}}</td>
+            {{#displayRates}}
+              <td class="border show {{baseCode}}-collapse">{{displayRates}}</td>
+            {{/displayRates}}
         </tr>
-      {{/dropDownValues}}
+      {{/gridView}}
     </tbody>
 
 </table>
