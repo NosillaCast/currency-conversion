@@ -480,8 +480,8 @@ allTplAndDataPromise.then(
 
           // push the countries, rates and currency names into the card
           card.push(aRate);  // 
+          console.log(aRate);
       };
-     
       // create reference to array created in previous loop
       countries = card;
      
@@ -545,6 +545,7 @@ allTplAndDataPromise.then(
       });
 
       makecard(cardNo,cardCountries);
+      cardCountries = []; // empty countries after adding them to the card
       
       // Move focus to the most recent card created
       $("#card" + cardNo).focus();
