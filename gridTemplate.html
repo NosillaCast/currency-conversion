@@ -6,22 +6,28 @@
     <thead>
       <tr>
         <th scope="col" class="border"></th>
-        {{#gridView}}
+        {{#.}}
           <th scope="col" class="border show {{baseCode}}-collapse" id="{{baseCode}}-col">
             <p class="text-center">{{baseCode}}</p>
-        {{/gridView}}
+        {{/.}}
       </th>
     </tr>
     </thead>
     <tbody>
-      {{#gridView}}
+      {{#.}}
         <tr class="border show {{baseCode}}-collapse" id="{{baseCode}}-row"> 
             <td scope="row">{{baseName}}: {{baseCode}}</td>
             {{#displayRates}}
-              <td class="border show {{baseCode}}-collapse">{{displayRates}}</td>
+              <td class="border show {{baseCode}}-collapse">{{.}}</td>
             {{/displayRates}}
         </tr>
-      {{/gridView}}
+      {{/.}}
     </tbody>
 
 </table>
+
+<!-- {{#.}}
+  <ul>
+    <li>BaseCode goes here ==> {{baseCode}}</li>
+  </ul>
+{{/.}} -->

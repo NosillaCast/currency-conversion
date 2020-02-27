@@ -196,7 +196,7 @@ function closeCard(){};
 var ccRatePairs = '';
 let dropDownView = {}; // when functioning this will have as keys all of the currency codes (cc) and with it, currency codes (cc): currency names (cn), cc: rates and # decimals (minorUnit) and maybe more
 var dropDownValues = [];
-let gridView = {};
+let gridView = [];
 var aDropDown = {};
 var aCheckbox = {};
 var convertAmount = ''; // the value they type into the textbox; amount to convert
@@ -407,11 +407,15 @@ allTplAndDataPromise.then(
           // console.log(allRows[j][1][i]['displayRate']);
         }
     }
+    
+    // allRows = $.extend({}, {allRows});
+    // console.log(allRows);
+
     // build a view called gridView from allRows
-    for (const baseCode in allRows){
+    // for (const baseCode in allRows){
       for (let j = 0; j < allRows.length; j++){
         // Declare internal variables
-        let baseCode = [];
+        let baseCode = '';
         let baseName = '';
         let displayRates = [];
         // find base country code and name
@@ -422,12 +426,12 @@ allTplAndDataPromise.then(
           displayRates.push(allRows[j][1][i]['displayRate']);
       };
       // shove it all into gridView
-      gridView[baseCode] = {
+      gridView[j] = {
         baseCode: baseCode, 
         baseName: baseName,
         displayRates};
       };       
-    };
+    // };
     // This makes an array. Then you use forEach to loop through the array & call Mustache for each one to make the row. You access each object using the key from the Object.keys array & use THAT as the view. As: gridView[cntry]
 
     // Object.keys(gridView).sort().forEach(function(cntry){ 
