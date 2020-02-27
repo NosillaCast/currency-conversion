@@ -17,9 +17,11 @@
       {{#.}}
         <tr class="border show {{baseCode}}-collapse" id="{{baseCode}}-row"> 
             <td scope="row">{{baseName}}: {{baseCode}}</td>
-            {{#displayRates}}
-              <td class="border show {{baseCode}}-collapse">{{.}}</td>
-            {{/displayRates}}
+            {{#.}}
+              {{#displayRates}}
+                  <td class="border show {{baseCode}}-collapse">{{.}}</td>
+              {{/displayRates}}
+            {{/.}}
         </tr>
       {{/.}}
     </tbody>

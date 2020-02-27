@@ -91,7 +91,7 @@
       </div> <!-- close row for show conversions button -->
 
   </div> <!-- close container for top half -->
-  <div class="container"> <!-- open container for nav -->
+  <div class="container-fluid"> <!-- open container for nav -->
     <!-- the nav controlling the panes -->
     <div class = "row"> <!-- open row for nav + panes -->
       <div class="col"> <!-- open col for nav + panes -->
@@ -106,7 +106,7 @@
           <!-- Tab Pane 1 - convert specific amount by Base Country -->
           <div class="tab-pane " id="byBase" role="tabpanel" aria-labelledby="byBase-tab"> <!-- Open Pane 1 (tab) -->
             <!-- Text box to enter amount to convert (no mustache) -->
-            <div class="container"> <!-- open container for convert by Base Country -->
+            <div class="container-fluid"> <!-- open container for convert by Base Country -->
               <div class="row d-flex mb-4 mt-4">
                 <div  class="col">
                   <div class="form-inline justify-content-center was-validated">
@@ -137,10 +137,11 @@
 
           <!-- Tab Pane 2 - create grid of country conversions -->
           <div class="tab-pane active" id="grid" role="tabpanel" aria-labelledby="byGrid-tab"> <!-- Open Pane 2 (tab) -->
-            <div class="container"> <!-- open container for tab 2 -->
-              
-              <!-- open row for grid -->
-              <div class="row d-flex justify-content-center" id="gridT"></div>
+            <div class="container-fluid"> <!-- open container for tab 2 -->
+              <div class="col">
+                <!-- open row for grid -->
+                <div class="row d-flex justify-content-center" id="gridT"></div>
+              </div>
             </div> <!-- close container for tab 2 (grid) -->
           </div> <!-- close Pane 2 (tab) -->
 
