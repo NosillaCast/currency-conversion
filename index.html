@@ -67,7 +67,7 @@
       
       <button class="button form-control bg-success text-light rounded col-sm-2" id="checkAllBtn">Check All</button>
       <button class="button form-control bg-danger text-light rounded col-sm-2" id="uncheckAllBtn">Uncheck All</button>
-    </div> <!-- close row for check all/none boxees -->
+    </div> <!-- close row for check all/none boxes -->
     
     <!-- Grid of checkboxes to choose countries for card -->
   
@@ -558,14 +558,22 @@ allTplAndDataPromise.then(
     /**************************************************
     * Script to check all the boxes (and uncheck all) *
     ***************************************************/
+
+
     // Click handler for checkAll
     $('#checkAllBtn').click(function(){
       $("input:checkbox").prop("checked", true);
-    })
+      $("[class$='collapse']").removeClass('collapse');
+      $("[class$='collapse']").addClass('show');
+      $("input:checkbox").prop("aria-expanded", true); 
+    });
     // Click handler for uncheckAll
     $('#uncheckAllBtn').click(function(){
       $("input:checkbox").prop("checked", false);
-    })
+      $("[class$='collapse']").removeClass('show');
+      $("[class$='collapse']").addClass('collapse');
+      $("input:checkbox").prop("aria-expanded", false);
+    });
  
   });
   
