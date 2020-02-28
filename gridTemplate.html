@@ -18,9 +18,9 @@
         <tr class="border show {{baseCode}}-collapse" id="{{baseCode}}-row"> 
             <td scope="row">{{baseName}}: {{baseCode}}</td>
             {{#.}}
-              {{#displayRates}}
-                  <td class="border show {{baseCode}}-collapse">{{.}}</td>
-              {{/displayRates}}
+              {{#column}}
+                  <td class="border show {{colCode}}-collapse">{{colRate}}</td>
+              {{/column}}
             {{/.}}
         </tr>
       {{/.}}

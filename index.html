@@ -408,31 +408,33 @@ allTplAndDataPromise.then(
           // console.log(allRows[j][1][i]['displayRate']);
         }
     }
-    
-    // allRows = $.extend({}, {allRows});
-    // console.log(allRows);
 
     // build a view called gridView from allRows
-    // for (const baseCode in allRows){
+   
       for (let j = 0; j < allRows.length; j++){
         // Declare internal variables
         let baseCode = '';
         let baseName = '';
-        let displayRates = [];
+        let column = [];
+        let colName = '';
+        let colRate = '';
         // find base country code and name
-        baseCode = allRows[j][0];
-        baseName = allRows[j][1][j]['currencyName'];
-        // For a given j, iterate through the countries to get their rates
         for (i = 0; i < allRows.length; i++){
-          displayRates.push(allRows[j][1][i]['displayRate']);
+          baseCode = allRows[j][0];
+          baseName = allRows[j][1][j]['currencyName'];
+          colCode = allRows[j][1][i]['currencyCode'];
+          colRate = allRows[j][1][i]['displayRate'];
+          column.push({colCode: colCode, colRate: colRate})
+        };
+        
+        // shove it all into gridView
+        gridView[j] = {
+          baseCode: baseCode, 
+          baseName: baseName,
+          column
+        };       
       };
-      // shove it all into gridView
-      gridView[j] = {
-        baseCode: baseCode, 
-        baseName: baseName,
-        displayRates};
-      };       
-    // };
+      console.log(gridView);
     // This makes an array. Then you use forEach to loop through the array & call Mustache for each one to make the row. You access each object using the key from the Object.keys array & use THAT as the view. As: gridView[cntry]
 
     // Object.keys(gridView).sort().forEach(function(cntry){ 
