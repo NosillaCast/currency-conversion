@@ -65,8 +65,8 @@
     
     <div class="form-group row d-flex justify-content-center"><!-- buttons to check all and uncheck all -->
       
-      <button class="button form-control bg-success text-light rounded col-sm-2" id="checkAllBtn">Check All</button>
-      <button class="button form-control bg-danger text-light rounded col-sm-2" id="uncheckAllBtn">Uncheck All</button>
+      <!-- <button class="button form-control bg-success text-light rounded col-sm-2" id="checkAllBtn">Check All</button>
+      <button class="button form-control bg-danger text-light rounded col-sm-2" id="uncheckAllBtn">Uncheck All</button> -->
     </div> <!-- close row for check all/none boxes -->
     
     <!-- Grid of checkboxes to choose countries for card -->
@@ -163,7 +163,7 @@
 
 <!-- Create script here -->
 <script type='text/javascript'>
-
+$(function(){
 
 /****************************************************
 * INSIDE THE SCRIPT TAG                             *
@@ -559,7 +559,7 @@ allTplAndDataPromise.then(
     * Script to check all the boxes (and uncheck all) *
     ***************************************************/
 
-
+    // using wildcards in class per https://codepen.io/AlexBezuska/pen/EtDJe
     // Click handler for checkAll
     $('#checkAllBtn').click(function(){
       $("input:checkbox").prop("checked", true);
@@ -581,7 +581,8 @@ allTplAndDataPromise.then(
     function(){
       console.log('something is wrong');
   });
-  
+
+});
 
 </script>
 </body>
