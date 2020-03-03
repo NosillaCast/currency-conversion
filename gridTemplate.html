@@ -1,5 +1,5 @@
 <!-- template string -->
-
+<div class="data-parent" id="showAllParent">
 <table data-role="table" data-mode="columntoggle"  class="table table-condensed table-hover table-sm" >
   <caption>Horizontal/vertical lookup table for conversions between countries</caption>
   
@@ -7,7 +7,7 @@
       <tr>
         <th scope="col" class="border"></th>
         {{#.}}
-          <th scope="col" class="border show {{baseCode}}-collapse multi-collapse" id="{{baseCode}}-col">
+          <th scope="col" class="border show {{baseCode}}-collapse collapseAll " id="{{baseCode}}-col">
             <p class="text-center">{{baseCode}}</p>
         {{/.}}
       </th>
@@ -15,11 +15,11 @@
     </thead>
     <tbody>
       {{#.}}
-        <tr class="border show {{baseCode}}-collapse  multi-collapse" id="{{baseCode}}-row"> 
+        <tr class="border show {{baseCode}}-collapse collapseAll" id="{{baseCode}}-row"> 
             <td scope="row">{{baseName}}: {{baseCode}}</td>
             {{#.}}
               {{#column}}
-                  <td class="border show {{colCode}}-collapse  multi-collapse">{{colRate}}</td>
+                  <td class="border show {{colCode}}-collapse collapseAll"  align="right">{{colRate}}</td>
               {{/column}}
             {{/.}}
         </tr>
@@ -27,3 +27,4 @@
     </tbody>
 
 </table>
+</div>
