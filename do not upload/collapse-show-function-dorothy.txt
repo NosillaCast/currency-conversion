@@ -1,0 +1,24 @@
+Function Dorothy and I wrote to turn on some of the switches after the grid is shown with all countries OFF by default on load.  Did work to flip switches but all off on load means gridView is empty because it looks for flipped switches. Why did I do it that way? Maybe because I wanted to have only a few countries populated at first. but my design actually builds the entire table and just hides countries.
+
+
+   $('.USD-collapse').collapse('show');
+    $('#countryUSD').prop('checked', true);
+    $('.NZD-collapse').collapse('show');
+    $('#countryNZD').prop('checked', true);
+    $('.ISK-collapse').collapse('show');
+    $('#countryISK').prop('checked', true);
+    
+    or use function
+    
+    // turnOn('USD-collapse', 'countryUSD');
+    // turnOn('NZD-collapse', 'countryNZD');
+    // turnOn('ISK-collapse', 'countryISK');
+    
+    // function turnOn(theClass, checkboxID){
+    //   $(`.${theClass}`).collapse('show');
+    //   $(`#${checkboxID}`).prop("checked", true);
+    // };
+    // function turnOff(theClass, checkboxID){
+    //   $(`.${theClass}`).collapse('hide');
+    //   $(`#${checkboxID}`).prop("checked", false);
+    // };
