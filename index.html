@@ -572,13 +572,13 @@ allTplAndDataPromise.then(
     // Click handler for checkAll
     $('#checkAllBtn').click(function(){
       $("input:checkbox").prop("checked", true);
-      $('.collapseAll').collapse('show');
+      $('.collapseAll').show();
       $("input:checkbox").prop("aria-expanded", true); 
     });
     // Click handler for uncheckAll
     $('#uncheckAllBtn').click(function(){
       $("input:checkbox").prop("checked", false);
-      $('.collapseAll').collapse('hide');
+      $('.collapseAll').hide();
       $("input:checkbox").prop("aria-expanded", false);
     });
  
