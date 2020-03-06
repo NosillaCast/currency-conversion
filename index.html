@@ -102,7 +102,7 @@
         <div class="row tab-content rounded-bottom px-3"> <!-- open panes -->
 
           <!-- Tab Pane 1 - convert specific amount by Base Country -->
-          <div class="tab-pane " id="byBase" role="tabpanel" aria-labelledby="byBase-tab"> <!-- Open Pane 1 (tab) -->
+          <div class="tab-pane col" id="byBase" role="tabpanel" aria-labelledby="byBase-tab"> <!-- Open Pane 1 (tab) -->
             <!-- Text box to enter amount to convert (no mustache) -->
             <div class="container-fluid"> <!-- open container for convert by Base Country -->
               <div class="row d-flex mb-4 mt-4">
@@ -127,13 +127,15 @@
             </div> <!-- close row for base country select -->
 
             <!-- open row for show conversions button -->      
-              <div class="form-group row justify-content-center">
-                <button class="button form-control bg-success text-light rounded col-sm-8 col-md-4" id="setBaseCountryBtn">Show Conversions</button>
-              </div> <!-- close row for show conversions button -->
+            <div class="form-group row justify-content-center">
+              <button class="button form-control bg-success text-light rounded col-sm-8 col-md-4" id="setBaseCountryBtn">Show Conversions</button>
+            </div> <!-- close row for show conversions button -->
 
             <!-- Bootstrap card created with cardTemplate.html -->  
-            <div class="container">
-              <div class="row" id="cardsPlaceholder"></div>
+            <div class="container-fluid">
+              <div class="col-12">
+                <div class="row" id="cardsPlaceholder"></div>
+              </div>
             </div>  
             <!-- open container for scroll to top -->
             <div class='container'> 
