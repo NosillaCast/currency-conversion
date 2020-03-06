@@ -1,9 +1,9 @@
 <!-- template string -->
 <div class="data-parent" id="showAllParent">
-<table data-role="table" data-mode="columntoggle"  class="table table-condensed table-hover table-sm" >
-  <caption>Horizontal/vertical lookup table for conversions between countries</caption>
+  <table data-role="table" data-mode="columntoggle"  class="table table-condensed table-striped table-sm table-responsive" >
+  <caption>Live data source: <a href="https://api.exchangeratesapi.io">https://api.exchangeratesapi.io</a></caption>
   
-    <thead>
+    <thead class="">
       <tr>
         <th scope="col" class="border"></th>
         {{#.}}
@@ -16,15 +16,14 @@
     <tbody>
       {{#.}}
         <tr class="border show {{baseCode}}-collapse collapseAll" id="{{baseCode}}-row"> 
-            <td scope="row">{{baseName}}: {{baseCode}}</td>
+            <td scope="row" class="">{{baseName}}: {{baseCode}}</td>
             {{#.}}
               {{#column}}
-                  <td class="border show {{colCode}}-collapse collapseAll"  align="right">{{colRate}}</td>
+                  <td class="border show {{colCode}}-collapse collapseAll" align="right">{{colRate}}</td>
               {{/column}}
             {{/.}}
         </tr>
       {{/.}}
     </tbody>
-
-</table>
+  </table>
 </div>

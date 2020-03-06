@@ -1,0 +1,59 @@
+<!-- template string -->
+<!-- Style for table -->
+<style>
+  table tr{
+    height: 50px;
+  }
+  div .left-col{
+    margin-right: 0px;
+    padding-right: 0px;
+  }
+  div .tableBody{
+    margin-left: 0px;
+    padding-left: 0px;
+  }
+</style>
+<!-- <div class = "container"> -->
+  <div class = "row">
+    <div class="table-responsive data-parent col-2 left-col align-middle" float="right" id="showAllParent">
+      <table class="table">
+        <th scope="col" class="border show pl-2">Currency</th>
+        <tbody>
+          {{#.}}
+            <tr class="border show {{baseCode}}-collapse collapseAll align-middle col" id="{{baseCode}}-row"> 
+              <td scope="row" class="text-left pl-2">{{baseName}}: {{baseCode}}</td>
+            </tr>
+            {{/.}}
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="data-parent col-sm-2 col-md-4 col-lg-10 tableBody" id="showAllParentBody">
+      <table data-role="table" data-mode="columntoggle"  class="table table-condensed table-sm table-responsive" >
+      <caption>Live data source: <a href="https://api.exchangeratesapi.io">https://api.exchangeratesapi.io</a></caption>
+      
+        <thead class="">
+          <tr>
+            {{#.}}
+              <th scope="col" class="border show {{baseCode}}-collapse collapseAll align-middle" id="{{baseCode}}-col">
+                <p class="text-center">{{baseCode}}</p>
+            {{/.}}
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr>
+            {{#.}}
+              {{#.}}
+                {{#column}}
+                    <td class="border show {{colCode}}-collapse collapseAll align-middle"  align="right">{{colRate}}</td>
+                {{/column}}
+              {{/.}}
+          </tr>
+          {{/.}}
+        </tbody>
+      </table>
+    </div>
+    
+  </div>
+<!-- </div> -->
