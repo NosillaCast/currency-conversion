@@ -1,13 +1,13 @@
 <!-- template string -->
 <div class="data-parent" id="showAllParent">
-  <table data-role="table" data-mode="columntoggle"  class="table table-condensed table-striped table-sm table-responsive table-hover" >
+  <table id="currencyTable" data-role="table" data-mode="columntoggle"  class="table table-condensed table-striped table-sm table-responsive table-hover tableData" >
   <caption>Live data source: <a href="https://api.exchangeratesapi.io">https://api.exchangeratesapi.io</a></caption>
   
-    <thead class="">
+    <thead class=" border border-bottom-0">
       <tr>
-        <th scope="col" class="border"></th>
+        <th scope="col" class="" width="166px" tabindex="0"></th> <!-- bizarre width requred to make columns of header line up with DataTables -->
         {{#.}}
-          <th scope="col" class="border show {{baseCode}}-collapse collapseAll " id="{{baseCode}}-col">
+          <th scope="col" class=" show {{baseCode}}-collapse collapseAll " id="{{baseCode}}-col" tabindex="0">
             <p class="text-center">{{baseCode}}</p>
         {{/.}}
       </th>
@@ -15,11 +15,11 @@
     </thead>
     <tbody>
       {{#.}}
-        <tr class="border show {{baseCode}}-collapse collapseAll" id="{{baseCode}}-row"> 
+        <tr class=" show {{baseCode}}-collapse collapseAll" id="{{baseCode}}-row"> 
             <th scope="row" class="">{{baseName}}: {{baseCode}}</th>
             {{#.}}
               {{#column}}
-                  <td class="border show {{colCode}}-collapse collapseAll" align="right" title="{{{baseCode}}} to {{colCode}}" data-toggle="tooltip">{{colRate}}</td>
+                  <td class=" show {{colCode}}-collapse collapseAll" align="right" title="{{{baseCode}}} to {{colCode}}" data-toggle="tooltip">{{colRate}}</td>
               {{/column}}
             {{/.}}
         </tr>
