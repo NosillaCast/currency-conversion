@@ -5,3 +5,6 @@ Styles to for Currency Converter
 .dataTables_filter {
   float: left !important;
   }
+.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody {
+  overflow-y: scroll !important;
+}

@@ -13,6 +13,8 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedcolumns/3.3.0/css/fixedColumns.dataTables.min.css">
   <!-- include my own css file -->
   <link rel="stylesheet" type="text/css" href="styles.css">
+  <!-- Bootstrap: To ensure proper rendering and touch zooming, add the viewport meta tag to your <head>. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <title>Currency exchange</title>
   <!-- 
@@ -469,7 +471,7 @@
 
       $('.dataTables_filter').addClass('pull-left'); // class in styles.css is requred for the "left" command in the DataTable to work
       $('#currencyTable').DataTable({
-        "dom": '<"left"f>ltipr', // this puts the filter (search) on the left
+        "dom": '<"left"f>ltipr', // this puts the filter (search) on the left. Adding "s" is supposed to add scroller
         paging: false, // gets rid of the "show 10 pulldown"
         ordering: false, // gets rid of the sort order chevrons
         scrollY: 400,
@@ -616,11 +618,8 @@
       $("input[name='cntry']").click(function(){
         checkedCountry = `.${$(this).prop('value')}-collapse`;
         if($(this).is(':checked')){
-          
           $(checkedCountry).show();
         //   // find the data-target for this particular checkbox and set the elements with that data-target class to .show()
-        //   // value='{{currencyCode}}'
-        //   // data-target=".{{currencyCode}}-collapse"
         }else{
           $(checkedCountry).hide();
           // find the data-target for this particular checkbox and set the elements with that data-target class to .hide()
