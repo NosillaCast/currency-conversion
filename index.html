@@ -26,7 +26,7 @@
   <style >:focus { outline: none; }
   </style>
 </head>
-<body>
+<body >
 	<nav class='navbar navbar-expand-md navbar-light'>
 		<a class='navbar-brand' href="#">Navigation</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -170,485 +170,502 @@
     </div> <!-- close row for navs + panes -->
   </div> <!-- close container for nav + panes -->
   <!-- Include Bootstrap JavaScript from CDNs -->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-<!-- This is not working! did not work as a tooltip  -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" 
-integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<!-- is.js library -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/is_js/0.9.0/is.min.js" integrity="sha256-lnJeulOa3e5IO2EzHr8jKJ3CbT80MBwkS5a+n2ooIr4=" crossorigin="anonymous"></script>
-<!-- Include mustache.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.js" integrity="sha256-eWzD4VoILNfodzTHdCIMKX/k47LcM3hmpTfFhAR7Cj0=" crossorigin="anonymous"></script>
-<!-- import lodash library - required to make deep clones of arrays -->
-<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js" integrity="sha256-VeNaFBVDhoX3H+gJ37DpT/nTuZTdjYro9yBruHjVmoQ=" crossorigin="anonymous"></script>
-<!-- import dataTables fixedColumns & fixedHeader -->
-<!-- <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/fc-3.3.0/fh-3.1.6/datatables.min.js"></script> -->
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
-<script type="text/javascript" language="Javascript" src="https://cdn.datatables.net/fixedcolumns/3.3.0/js/dataTables.fixedColumns.min.js"></script>
-<script type="text/javascript" language="Javascript" src="https://cdn.datatables.net/fixedheader/3.1.6/js/dataTables.fixedHeader.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <!-- This is not working! did not work as a tooltip  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" 
+  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <!-- is.js library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/is_js/0.9.0/is.min.js" integrity="sha256-lnJeulOa3e5IO2EzHr8jKJ3CbT80MBwkS5a+n2ooIr4=" crossorigin="anonymous"></script>
+  <!-- Include mustache.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.js" integrity="sha256-eWzD4VoILNfodzTHdCIMKX/k47LcM3hmpTfFhAR7Cj0=" crossorigin="anonymous"></script>
+  <!-- import lodash library - required to make deep clones of arrays -->
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js" integrity="sha256-VeNaFBVDhoX3H+gJ37DpT/nTuZTdjYro9yBruHjVmoQ=" crossorigin="anonymous"></script>
+  <!-- import dataTables fixedColumns & fixedHeader -->
+  <!-- <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/fc-3.3.0/fh-3.1.6/datatables.min.js"></script> -->
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+  <script type="text/javascript" language="Javascript" src="https://cdn.datatables.net/fixedcolumns/3.3.0/js/dataTables.fixedColumns.min.js"></script>
+  <script type="text/javascript" language="Javascript" src="https://cdn.datatables.net/fixedheader/3.1.6/js/dataTables.fixedHeader.min.js"></script>
 
-<!-- Create script here -->
-<script type='text/javascript'>
-  $(function(){
+  <!-- Create script here -->
+  <script type='text/javascript'>
+    $(function(){
 
-  /****************************************************
-  * INSIDE THE SCRIPT TAG                             *
-  * WRITE BIG COMMENT BLOCKS LIKE THIS                *
-  ****************************************************/
+    /****************************************************
+    * INSIDE THE SCRIPT TAG                             *
+    * WRITE BIG COMMENT BLOCKS LIKE THIS                *
+    ****************************************************/
 
-  /*************************
-  * VARIABLE DEFINITIONS   *
-  *************************/
-  var myTemplate = {};
-  var myView = {};
-  var allTplAndDataPromise = [];
-  var countryCodes = [];
-  var exchangeRates = [];
-  var countryRates = [];
-  var baseCurrency = "USD";
-  var tempView = [];
-  // var finalView = []; //  view to make the cards
-  var allView = []; // view to make the dropdown with all countries
-  var card = [];
-  var countryCode = {};
-  var cardCountries = [];
-  var cardNumber = {};
-  var templPlaceholder = '';
-  var aCard = {};
-  let countries = [];
-  var cardBase = "";
-  var acn = ""; // holding place for currencyName to make chooseCountryView
-  var acc = ""; // holding place for allCountryCode to make chooseCountryView
-  function closeCard(){};
-  var ccRatePairs = '';
-  let dropDownView = {}; // when functioning this will have as keys all of the currency codes (cc) and with it, currency codes (cc): currency names (cn), cc: rates and # decimals (minorUnit) and maybe more
-  var dropDownValues = [];
-  let gridView = [];
-  var aDropDown = {};
-  var aCheckbox = {};
-  var convertAmount = ''; // the value they type into the textbox; amount to convert
-  var rowBase = []; // doesn't need to be global IF I keep the default of all countries selected because it gets pushed on load.
-  var allRows = [];
+    /*************************
+    * VARIABLE DEFINITIONS   *
+    *************************/
+    var myTemplate = {};
+    var myView = {};
+    var allTplAndDataPromise = [];
+    var countryCodes = [];
+    var exchangeRates = [];
+    var countryRates = [];
+    var baseCurrency = "USD";
+    var tempView = [];
+    // var finalView = []; //  view to make the cards
+    var allView = []; // view to make the dropdown with all countries
+    var card = [];
+    var countryCode = {};
+    var cardCountries = [];
+    var cardNumber = {};
+    var templPlaceholder = '';
+    var aCard = {};
+    let countries = [];
+    var cardBase = "";
+    var acn = ""; // holding place for currencyName to make chooseCountryView
+    var acc = ""; // holding place for allCountryCode to make chooseCountryView
+    function closeCard(){};
+    var ccRatePairs = '';
+    let dropDownView = {}; // when functioning this will have as keys all of the currency codes (cc) and with it, currency codes (cc): currency names (cn), cc: rates and # decimals (minorUnit) and maybe more
+    var dropDownValues = [];
+    let gridView = [];
+    var aDropDown = {};
+    var aCheckbox = {};
+    var convertAmount = ''; // the value they type into the textbox; amount to convert
+    var rowBase = []; // doesn't need to be global IF I keep the default of all countries selected because it gets pushed on load.
+    var allRows = [];
+    var showCountries = '';
 
-  // A promise to pull the template file template.txt for use in the mustaches
-  const tplPromise = $.ajax({
-    url: './template.txt',
-    method: 'GET',
-    dataType: 'html',
-    cache: false
-  });
-  // A promise to pull the country codes and exchange rates from exchangeratesapi.io
-  const dataPromise = $.ajax({ 
-    url: 'https://api.exchangeratesapi.io/latest?base=USD',
-    method: 'GET',
-    dataType: 'json',
-    cache: false,
-  });
-  // A promise to pull the cardTemplate.html file used to build the cards
-  const cardTplPromise = $.ajax({
-    url: './cardTemplate.html',
-    method: 'GET',
-    dataType: 'html',
-    cache: false
-  });
-  // A promise to pull the countryAndCodeTemplate.html file used to build the dropdown
-  const dropdownTplPromise = $.ajax({
-    url: './countryAndCodeTemplate.html',
-    method: 'GET',
-    dataType: 'html',
-    cache: false
-  });
-  // a promise to pull the data of all the country/code info
-  const dropdownTplData = $.ajax({
-    url: './countryAndCodeData.json', // source ISO 4217 https://www.xe.com/de/iso4217.php
-    method: 'GET',
-    dataType: 'json',
-    cache: false
-  });
-  const checkboxTplPromise = $.ajax({
-    url: './chooseCountriesTemplate.html',
-    method: 'GET',
-    dataType: 'html',
-    cache: false
-  });
-  const gridTemplate = $.ajax({
-    url: './gridTemplate.html',
-    method: 'GET',
-    dataType: 'html',
-    cache: false
-  });
+    // A promise to pull the template file template.txt for use in the mustaches
+    const tplPromise = $.ajax({
+      url: './template.txt',
+      method: 'GET',
+      dataType: 'html',
+      cache: false
+    });
+    // A promise to pull the country codes and exchange rates from exchangeratesapi.io
+    const dataPromise = $.ajax({ 
+      url: 'https://api.exchangeratesapi.io/latest?base=USD',
+      method: 'GET',
+      dataType: 'json',
+      cache: false,
+    });
+    // A promise to pull the cardTemplate.html file used to build the cards
+    const cardTplPromise = $.ajax({
+      url: './cardTemplate.html',
+      method: 'GET',
+      dataType: 'html',
+      cache: false
+    });
+    // A promise to pull the countryAndCodeTemplate.html file used to build the dropdown
+    const dropdownTplPromise = $.ajax({
+      url: './countryAndCodeTemplate.html',
+      method: 'GET',
+      dataType: 'html',
+      cache: false
+    });
+    // a promise to pull the data of all the country/code info
+    const dropdownTplData = $.ajax({
+      url: './countryAndCodeData.json', // source ISO 4217 https://www.xe.com/de/iso4217.php
+      method: 'GET',
+      dataType: 'json',
+      cache: false
+    });
+    const checkboxTplPromise = $.ajax({
+      url: './chooseCountriesTemplate.html',
+      method: 'GET',
+      dataType: 'html',
+      cache: false
+    });
+    const gridTemplate = $.ajax({
+      url: './gridTemplate.html',
+      method: 'GET',
+      dataType: 'html',
+      cache: false
+    });
 
-  // a promise that returns an array with the template in [0] and the data (view) in [1]
-  allTplAndDataPromise = Promise.all([tplPromise, dataPromise, cardTplPromise,dropdownTplPromise,dropdownTplData,checkboxTplPromise,gridTemplate]); 
+    // a promise that returns an array with the template in [0] and the data (view) in [1]
+    allTplAndDataPromise = Promise.all([tplPromise, dataPromise, cardTplPromise,dropdownTplPromise,dropdownTplData,checkboxTplPromise,gridTemplate]); 
 
-  // Use .then operator to take action now that the promises are all resolved by the Promise.all
-  allTplAndDataPromise.then(
-    function(xArray){
-      // Assign variable names to the template and view
-      myTemplate = xArray[0];
-      myView = xArray[1];
-      myCardTemplate = xArray[2];
-      ddTemplate = xArray[3]; // template for dropdown
-      allCountryView = xArray[4]; // data file with all countries and codes
-      cbTemplate = xArray[5]; // template for checkboxes
-      gTemplate = xArray[6]; //template for grid
-
-
-      /****************************************
-      / Magic Decoder Ring from AJAX to Views *
-      ****************************************/
-      // ********************** //
-      //   path for aCard view: //
-      // ***********************//
-          // --> exchangerate.io (AJAX) 
-            // --> xArray[1] (promise.then)
-            // --> myView = xArray[1]
-            // --> aRate.rate from myView.rates
-            // --> card from aRate
-            // --> countries = card
-            //  --> aCard from countries used in Mustache render
+    // Use .then operator to take action now that the promises are all resolved by the Promise.all
+    allTplAndDataPromise.then(
+      function(xArray){
+        // Assign variable names to the template and view
+        myTemplate = xArray[0];
+        myView = xArray[1];
+        myCardTemplate = xArray[2];
+        ddTemplate = xArray[3]; // template for dropdown
+        allCountryView = xArray[4]; // data file with all countries and codes
+        cbTemplate = xArray[5]; // template for checkboxes
+        gTemplate = xArray[6]; //template for grid
 
 
-      // path for allCountryView:
-        // countryAndCodeData.json 
-          // --> dropdownTplData (AJAX) 
-            // --> xArray[4] (promise.then) 
-              //  --> allCountryView
-              // allCountryView is ALL COUNTRIES with 
-              // AlphabeticCode: "AFN", name: "Afghani", Entity: "AFGHANISTAN", MinorUnit: "2" 
-      
-      // path for dropdown template
-        // countryAndCodeTemplate.html (AJAX)
-          // --> xArray[3] (Promise.then)
-          // --> ddTemplate = xArray[3]
+        /****************************************
+        / Magic Decoder Ring from AJAX to Views *
+        ****************************************/
+        // ********************** //
+        //   path for aCard view: //
+        // ***********************//
+            // --> exchangerate.io (AJAX) 
+              // --> xArray[1] (promise.then)
+              // --> myView = xArray[1]
+              // --> aRate.rate from myView.rates
+              // --> card from aRate
+              // --> countries = card
+              //  --> aCard from countries used in Mustache render
 
-      // path for ccRatePairs
-        // --> exchangerate.io (AJAX)
-        // --> xArray[1] (promise.then)
-        // --> ccRatePairs = xArray[1].rates
-      
-      // path for checkbox template
-        // chooseCountriesTemplate.html (AJAX)
-          // --> checkboxTplPromise from chooseCountriesTemplate.html
-          // --> xArray[5] (Promise.then)
-          // --> cbTemplate = xArray[5]
 
-      // path for grid template
-        // gridTemplate.html (AJAX)
-          // --> gridTplPromise from chooseCountriesTemplate.html
-          // --> xArray[6] (Promise.then)
-          // --> gTemplate = xArray[6]
-
-      // for every country code from exchangerate we want to add the alphabeticCode from allCountryView. e.g. loop through exchangerate. exchangerate = ccRatePairs
-
-      ccRatePairs = xArray[1].rates; // ccRatePairs now only has the country code/rate pairs. But we'll be adding this data to the new object.
-      // console.log(`the keys in ccRatePairs is ${Object.keys(ccRatePairs)}`);
-
-      for (const cc in ccRatePairs){
-        // console.log(Object.keys(ccRatePairs)); // this is all the cc's in an array created by Object.keys
-        // console.log(Object.values(ccRatePairs)); // this is all the rates in an array created by Object.values
-        for (let i = 0; i < allCountryView.length; i++ ){
-          let cnAll = allCountryView[i]['name'];
-          let ccAll = allCountryView[i]['AlphabeticCode'];
-          let minorUnit = allCountryView[i]['MinorUnit'];
-          let cr = '';
-          let dr = '';
-
-          // if ccAll == cc, then find the index of cc and use it to pull the rate from ccRatePairs
+        // path for allCountryView:
+          // countryAndCodeData.json 
+            // --> dropdownTplData (AJAX) 
+              // --> xArray[4] (promise.then) 
+                //  --> allCountryView
+                // allCountryView is ALL COUNTRIES with 
+                // AlphabeticCode: "AFN", name: "Afghani", Entity: "AFGHANISTAN", MinorUnit: "2" 
         
-          if (ccAll == cc){
-            let ccIndex = Object.keys(ccRatePairs).indexOf(cc);
-            // console.log(ccIndex); // YES this returns 32 indices
-            cr = Object.values(ccRatePairs)[ccIndex];
-            
-            dropDownView[cc] = {currencyCode: ccAll, currencyName: cnAll, currencyRate: cr, minorUnit: minorUnit, displayRate: dr}  
-            // console.log(dropDownView[cc]); dr is '' here
-            // with [cc] it does them all, but makes objects with the cc as the key. without [cc] it only keeps the last one
-          }
-        };
-      };
-      
-      // Make the display the currencyRate values in dropDownView to the correct decimals
+        // path for dropdown template
+          // countryAndCodeTemplate.html (AJAX)
+            // --> xArray[3] (Promise.then)
+            // --> ddTemplate = xArray[3]
 
-      // get the values from dropDownView (which is the cc,cn,cr) and sort by the country name
-      // sort code learned from http://www.javascriptkit.com/javatutors/arraysort2.shtml
+        // path for ccRatePairs
+          // --> exchangerate.io (AJAX)
+          // --> xArray[1] (promise.then)
+          // --> ccRatePairs = xArray[1].rates
+        
+        // path for checkbox template
+          // chooseCountriesTemplate.html (AJAX)
+            // --> checkboxTplPromise from chooseCountriesTemplate.html
+            // --> xArray[5] (Promise.then)
+            // --> cbTemplate = xArray[5]
 
-      dropDownValues = Object.values(dropDownView).sort(function(a, b){
-        var nameA=a.currencyName.toLowerCase(), nameB=b.currencyName.toLowerCase();
-        if (nameA < nameB){ //sort string ascending
-          return -1;
-        };
-        if (nameA > nameB){
-          return 1;
-        };
-        return 0; //default return value (no sorting)
-      });
-      // console.log(dropDownValues); // already broken by PLN by here
+        // path for grid template
+          // gridTemplate.html (AJAX)
+            // --> gridTplPromise from chooseCountriesTemplate.html
+            // --> xArray[6] (Promise.then)
+            // --> gTemplate = xArray[6]
 
-      // round dropDownValues currencyRate to the minorUnit of each country
-      for(i = 0; i < dropDownValues.length; i++){
-        dropDownValues[i]['displayRate'] = (dropDownValues[i]['currencyRate']).toFixed(dropDownValues[i]['minorUnit']);
-      }
-      
-      // build the view for the drop down by putting the array dropDownValues inside the object aDropDown, I can now loop over dropDownValues in my mustache templates for the drop down as well as my checkboxes and my grid.
-      aDropDown = {
-        dropDownValues
-      }
-      
-      // Render mustache to populate drop down menu
-      $('#countrySelect').append(Mustache.render(ddTemplate, aDropDown));
-      
-      // Render mustache to populate checkboxes
-      // checkbox template but borrowing aDropDown data file
-      $('#chooseCountries').append(Mustache.render(cbTemplate, aDropDown));
+        // for every country code from exchangerate we want to add the alphabeticCode from allCountryView. e.g. loop through exchangerate. exchangerate = ccRatePairs
 
-      // ----------------------------------------------------------------- //
-      // Create a view with all the values in all the rows by base country //
-      // ----------------------------------------------------------------- //
-      
-      // rowBase will be an array with all the cc's
-      $.each($("input[name='cntry']:checked"), function(){
-            rowBase.push($(this).val());
-        });
+        ccRatePairs = xArray[1].rates; // ccRatePairs now only has the country code/rate pairs. But we'll be adding this data to the new object.
+        // console.log(`the keys in ccRatePairs is ${Object.keys(ccRatePairs)}`);
 
-      // rowBase = ["AUD", "THB", "BRL", "BGN", "CAD", "CZK", "DKK", "EUR", "HUF", "HKD", …]
-      // push a deep clone of dropDownValues with lodash library _.cloneDeep(dropDownValues);
+        for (const cc in ccRatePairs){
+          // console.log(Object.keys(ccRatePairs)); // this is all the cc's in an array created by Object.keys
+          // console.log(Object.values(ccRatePairs)); // this is all the rates in an array created by Object.values
+          for (let i = 0; i < allCountryView.length; i++ ){
+            let cnAll = allCountryView[i]['name'];
+            let ccAll = allCountryView[i]['AlphabeticCode'];
+            let minorUnit = allCountryView[i]['MinorUnit'];
+            let cr = '';
+            let dr = '';
 
-      // Push into rowBase at each index, and the deep clones of dropDownValues
-      for(i = 0; i < rowBase.length; i++){
-        allRows.push(
-          [rowBase[i], _.cloneDeep(dropDownValues)]
-        )};
-
-    // Loop through allRows to convert each element to the base rate
-      for (j = 0; j < allRows.length; j++){
-        for (i = 0; i < allRows[j][1].length; i++){
-            let baseCR = allRows[j][1][j]['currencyRate'];
-            // console.log(`baseCR is ${baseCR}`);
-            let thisCR = allRows[j][1][i]['currencyRate'];
-            // console.log(`thisCR is ${thisCR}`);
-            let thisMU = allRows[j][1][i]['minorUnit'];
-            let thisDR = (thisCR/baseCR).toFixed(thisMU);
-            // console.log(`thisDR is ${thisDR}`);
-            allRows[j][1][i]['displayRate'] = thisDR;
-            // console.log(allRows[j][1][i]['displayRate']);
-          }
-      }
-
-      // build a view called gridView from allRows
-        for (let j = 0; j < allRows.length; j++){
-          // Declare internal variables
-          let baseCode = '';
-          let baseName = '';
-          let column = [];
-          let colName = '';
-          let colRate = '';
-          // find base country code and name
-          for (i = 0; i < allRows.length; i++){
-            baseCode = allRows[j][0];
-            baseName = allRows[j][1][j]['currencyName'];
-            colCode = allRows[j][1][i]['currencyCode'];
-            colRate = allRows[j][1][i]['displayRate'];
-            column.push({colCode: colCode, colRate: colRate})
-          };
+            // if ccAll == cc, then find the index of cc and use it to pull the rate from ccRatePairs
           
-          // shove it all into gridView
-          gridView[j] = {
-            baseCode: baseCode, 
-            baseName: baseName,
-            column
-          };       
-        };
-        // console.log(gridView);
-      // This makes an array. Then you use forEach to loop through the array & call Mustache for each one to make the row. You access each object using the key from the Object.keys array & use THAT as the view. As: gridView[cntry]
-
-      // Object.keys(gridView).sort().forEach(function(cntry){ 
-      //   $('#gridT').append(Mustache.render(gTemplate, gridView))
-      // });
-
-      // Render mustache to populate grid
-      $('#gridT').append(Mustache.render(gTemplate, gridView))
-
-      /*****************************************************************
-      * Enable dataTables to make fixed header and column for the grid *
-      *****************************************************************/
-
-      $('.dataTables_filter').addClass('pull-left'); // class in styles.css is requred for the "left" command in the DataTable to work
-      $('#currencyTable').DataTable({
-        "dom": '<"left"f>ltipr', // this puts the filter (search) on the left. Adding "s" is supposed to add scroller
-        paging: false, // gets rid of the "show 10 pulldown"
-        ordering: false, // gets rid of the sort order chevrons
-        scrollY: 400,
-        scrollX: true,
-        responsive: true,
-        language: {searchPlaceholder: "Search Currencies"},
-      });
-      // $('#currencyTable').DataTable();
-
-      /**********************************************
-      *                The Cards                    *
-      **********************************************/
-
-      // this pushes the currency name (called simply name) into the cards
-      for (let i = 0; i < allCountryView.length; i++ ){
-        let cn = allCountryView[i]['name'];
-        let cc = allCountryView[i]['AlphabeticCode'];
-        let mu = allCountryView[i]['MinorUnit'];
-        allView.push({'acn':cn, 'acc':cc, 'mu': mu})
-        // console.log(allView); // shows all currency names & 3-digit codes & minorUnit (and nothing more) in an array
-      };
-
-      /**********************************************
-      * generic function to make all of the cards *
-      **********************************************/
-      
-      var makecard = function(cn,cc){ // input is card number and card countries
-        // create an empty array that will hold the country: rate pairs
-        countries = [];
-        card = [];
-        
-        for(const c of cc){ // Look up each country code and get it's rate
-        
-          let aRate = {};  //make an empty Object
-          aRate.country = c;  // populate aRate with the cardCountries codes
-          // loop through the allView looking for the countries
-          // Find the index of each, and set currencyName to the acn from that index
-          for (i=0; i < allView.length; i++){
-            if (allView[i].acc == c){
-              myIndex = i; // now I know the index where the countries are
-              aRate.currencyName = allView[myIndex].acn;
-              aRate.minorUnit = allView[myIndex].mu; 
+            if (ccAll == cc){
+              let ccIndex = Object.keys(ccRatePairs).indexOf(cc);
+              // console.log(ccIndex); // YES this returns 32 indices
+              cr = Object.values(ccRatePairs)[ccIndex];
+              
+              dropDownView[cc] = {currencyCode: ccAll, currencyName: cnAll, currencyRate: cr, minorUnit: minorUnit, displayRate: dr}  
+              // console.log(dropDownView[cc]); dr is '' here
+              // with [cc] it does them all, but makes objects with the cc as the key. without [cc] it only keeps the last one
             }
-          }
-            // Populate the rate, adjusted for the desired cardBase 
-            // Multiplied by convertAmount, the number they type into the texbox
-          
-            // Use toFixed to set decimals to minorUnit for each country
-            aRate.rate = (convertAmount*((myView.rates[c])/myView.rates[cardBase])).toFixed(aRate.minorUnit);
-
-            // push the countries, rates and currency names into the card
-            card.push(aRate);  // 
-            // console.log(aRate);
+          };
         };
-        // create reference to array created in previous loop
-        countries = card;
-      
-        // create a view called aCard to create each card with the template
-        // Dorothy Rendon:
-        // That was to build the entire card (a header with base country, card #, base currency) AND all the country rates (in 'countries') with one Mustache template and view.  So the matching template loops over 'countries' and creates the header with the key/value pairs. I think I was trying to get you into looping with Mustache.
-        aCard = {
-          countries,
-          "countryCode": cardBase,
-          "cardNumber": cardNo,
-          "cardB": cardBaseCurrencyName,
-          "convertAmount": convertAmount
+        
+        // Make the display the currencyRate values in dropDownView to the correct decimals
+
+        // get the values from dropDownView (which is the cc,cn,cr) and sort by the country name
+        // sort code learned from http://www.javascriptkit.com/javatutors/arraysort2.shtml
+
+        dropDownValues = Object.values(dropDownView).sort(function(a, b){
+          var nameA=a.currencyName.toLowerCase(), nameB=b.currencyName.toLowerCase();
+          if (nameA < nameB){ //sort string ascending
+            return -1;
+          };
+          if (nameA > nameB){
+            return 1;
+          };
+          return 0; //default return value (no sorting)
+        });
+        // console.log(dropDownValues); // already broken by PLN by here
+
+        // round dropDownValues currencyRate to the minorUnit of each country
+        for(i = 0; i < dropDownValues.length; i++){
+          dropDownValues[i]['displayRate'] = (dropDownValues[i]['currencyRate']).toFixed(dropDownValues[i]['minorUnit']);
         }
-        // render mustache to make cards
-        $('#cardsPlaceholder').append(Mustache.render(myCardTemplate, aCard));
-
-        //===========================//
-        //   make cards dismissable  //
-        //===========================// 
         
-        $('.close').on('click',function() {
-          $(this).closest('.card').remove();
-        })
-      }
-      
-      //  Create an array of the countries for the cards
-      // var cardCountries = ["RUB", "PHP", "DKK", "SEK", "GBP"];
-
-      // Get the value of country selection to put into cardBase
-      // also get the checked countries and push them into cardCountries
-      var cardNo = '0';
-      $('#setBaseCountryBtn').click(function(){
-        cardNo++
+        // build the view for the drop down by putting the array dropDownValues inside the object aDropDown, I can now loop over dropDownValues in my mustache templates for the drop down as well as my checkboxes and my grid.
+        aDropDown = {
+          dropDownValues
+        }
         
-        convertAmount = $('#tbVal').val();
-        if (!(convertAmount > 0)){
-          // const $a = $('<div>').text("Conversion amount must be greater than zero.")
-          // $a.addClass('alert alert-danger');
-          // $a.alert();
-          alert("Conversion amount must be a numeric value greater than zero.")
-          return
+        // Render mustache to populate drop down menu
+        $('#countrySelect').append(Mustache.render(ddTemplate, aDropDown));
+        
+        // Render mustache to populate checkboxes
+        // checkbox template but borrowing aDropDown data file
+        $('#chooseCountries').append(Mustache.render(cbTemplate, aDropDown));
+
+        // ----------------------------------------------------------------- //
+        // Create a view with all the values in all the rows by base country //
+        // ----------------------------------------------------------------- //
+        
+        // rowBase will be an array with all the cc's
+        $.each($("input[name='cntry']"), function(){
+              rowBase.push($(this).val());
+          });
+
+        // rowBase = ["AUD", "THB", "BRL", "BGN", "CAD", "CZK", "DKK", "EUR", "HUF", "HKD", …]
+        // push a deep clone of dropDownValues with lodash library _.cloneDeep(dropDownValues);
+
+        // Push into rowBase at each index, and the deep clones of dropDownValues
+        for(i = 0; i < rowBase.length; i++){
+          allRows.push(
+            [rowBase[i], _.cloneDeep(dropDownValues)]
+          )};
+
+      // Loop through allRows to convert each element to the base rate
+        for (j = 0; j < allRows.length; j++){
+          for (i = 0; i < allRows[j][1].length; i++){
+              let baseCR = allRows[j][1][j]['currencyRate'];
+              // console.log(`baseCR is ${baseCR}`);
+              let thisCR = allRows[j][1][i]['currencyRate'];
+              // console.log(`thisCR is ${thisCR}`);
+              let thisMU = allRows[j][1][i]['minorUnit'];
+              let thisDR = (thisCR/baseCR).toFixed(thisMU);
+              // console.log(`thisDR is ${thisDR}`);
+              allRows[j][1][i]['displayRate'] = thisDR;
+              // console.log(allRows[j][1][i]['displayRate']);
+            }
         }
 
-        // Find country code from dropdown (this is a 3-letter string)
-        cardBase = ($('#countrySelected option:selected').val());
+        // build a view called gridView from allRows
+          for (let j = 0; j < allRows.length; j++){
+            // Declare internal variables
+            let baseCode = '';
+            let baseName = '';
+            let column = [];
+            let colName = '';
+            let colRate = '';
+            // find base country code and name
+            for (i = 0; i < allRows.length; i++){
+              baseCode = allRows[j][0];
+              baseName = allRows[j][1][j]['currencyName'];
+              colCode = allRows[j][1][i]['currencyCode'];
+              colRate = allRows[j][1][i]['displayRate'];
+              column.push({colCode: colCode, colRate: colRate})
+            };
+            
+            // shove it all into gridView
+            gridView[j] = {
+              baseCode: baseCode, 
+              baseName: baseName,
+              column
+            };       
+          };
+          // console.log(gridView);
+        // This makes an array. Then you use forEach to loop through the array & call Mustache for each one to make the row. You access each object using the key from the Object.keys array & use THAT as the view. As: gridView[cntry]
+
+        // Object.keys(gridView).sort().forEach(function(cntry){ 
+        //   $('#gridT').append(Mustache.render(gTemplate, gridView))
+        // });
+
+        // Render mustache to populate grid
+        $('#gridT').append(Mustache.render(gTemplate, gridView))
+
+        /*****************************************************************
+        * Enable dataTables to make fixed header and column for the grid *
+        *****************************************************************/
+
+        $('.dataTables_filter').addClass('pull-left'); // class in styles.css is requred for the "left" command in the DataTable to work
+        $('#currencyTable').DataTable({
+          "dom": '<"left"f>ltipr', // this puts the filter (search) on the left. Adding "s" is supposed to add scroller
+          paging: false, // gets rid of the "show 10 pulldown"
+          ordering: false, // gets rid of the sort order chevrons
+          scrollY: 400,
+          scrollX: true,
+          responsive: true,
+          language: {searchPlaceholder: "Search Currencies"},
+        });
+        // $('#currencyTable').DataTable();
+
+        /**********************************************
+        *                The Cards                    *
+        **********************************************/
+
+        // this pushes the currency name (called simply name) into the cards
+        for (let i = 0; i < allCountryView.length; i++ ){
+          let cn = allCountryView[i]['name'];
+          let cc = allCountryView[i]['AlphabeticCode'];
+          let mu = allCountryView[i]['MinorUnit'];
+          allView.push({'acn':cn, 'acc':cc, 'mu': mu})
+          // console.log(allView); // shows all currency names & 3-digit codes & minorUnit (and nothing more) in an array
+        };
+
+        /**********************************************
+        * generic function to make all of the cards *
+        **********************************************/
         
-        for (i=0; i < allView.length; i++){
-          if (allView[i].acc == cardBase){
-            myIndex = i; // now I know the index where the chosen countries are
-            cardBaseCurrencyName = allView[myIndex].acn;
+        var makecard = function(cn,cc){ // input is card number and card countries
+          // create an empty array that will hold the country: rate pairs
+          countries = [];
+          card = [];
+          
+          for(const c of cc){ // Look up each country code and get it's rate
+          
+            let aRate = {};  //make an empty Object
+            aRate.country = c;  // populate aRate with the cardCountries codes
+            // loop through the allView looking for the countries
+            // Find the index of each, and set currencyName to the acn from that index
+            for (i=0; i < allView.length; i++){
+              if (allView[i].acc == c){
+                myIndex = i; // now I know the index where the countries are
+                aRate.currencyName = allView[myIndex].acn;
+                aRate.minorUnit = allView[myIndex].mu; 
+              }
+            }
+              // Populate the rate, adjusted for the desired cardBase 
+              // Multiplied by convertAmount, the number they type into the texbox
+            
+              // Use toFixed to set decimals to minorUnit for each country
+              aRate.rate = (convertAmount*((myView.rates[c])/myView.rates[cardBase])).toFixed(aRate.minorUnit);
+
+              // push the countries, rates and currency names into the card
+              card.push(aRate);  // 
+              // console.log(aRate);
+          };
+          // create reference to array created in previous loop
+          countries = card;
+        
+          // create a view called aCard to create each card with the template
+          // Dorothy Rendon:
+          // That was to build the entire card (a header with base country, card #, base currency) AND all the country rates (in 'countries') with one Mustache template and view.  So the matching template loops over 'countries' and creates the header with the key/value pairs. I think I was trying to get you into looping with Mustache.
+          aCard = {
+            countries,
+            "countryCode": cardBase,
+            "cardNumber": cardNo,
+            "cardB": cardBaseCurrencyName,
+            "convertAmount": convertAmount
           }
-        
+          // render mustache to make cards
+          $('#cardsPlaceholder').append(Mustache.render(myCardTemplate, aCard));
+
+          //===========================//
+          //   make cards dismissable  //
+          //===========================// 
+          
+          $('.close').on('click',function() {
+            $(this).closest('.card').remove();
+          })
         }
-        // cardCountries needs to be populated by checkboxes
-        // so if checked .value cardCountries.push[value] "each"
-        // do it on the add card button
-      
-        $.each($("input[name='cntry']:checked"), function(){
+        
+        //  Create an array of the countries for the cards
+        // var cardCountries = ["RUB", "PHP", "DKK", "SEK", "GBP"];
+
+        // Get the value of country selection to put into cardBase
+        // also get the checked countries and push them into cardCountries
+        var cardNo = '0';
+        $('#setBaseCountryBtn').click(function(){
+          cardNo++
+          
+          convertAmount = $('#tbVal').val();
+          if (!(convertAmount > 0)){
+            // const $a = $('<div>').text("Conversion amount must be greater than zero.")
+            // $a.addClass('alert alert-danger');
+            // $a.alert();
+            alert("Conversion amount must be a numeric value greater than zero.")
+            return
+          }
+
+          // Find country code from dropdown (this is a 3-letter string)
+          cardBase = ($('#countrySelected option:selected').val());
+          
+          for (i=0; i < allView.length; i++){
+            if (allView[i].acc == cardBase){
+              myIndex = i; // now I know the index where the chosen countries are
+              cardBaseCurrencyName = allView[myIndex].acn;
+            }
+          
+          }
+          // cardCountries needs to be populated by checkboxes
+          // so if checked .value cardCountries.push[value] "each"
+          // do it on the add card button
+        
+          // $.each($("input[name='cntry']:checked"), function(){
+            $.each($("input[name='cntry']:checked"), function(){
             cardCountries.push($(this).val());
+          });
+
+          makecard(cardNo,cardCountries);
+          cardCountries = []; // empty countries after adding them to the card
+          
+          // Move focus to the most recent card created
+          $("#card" + cardNo).focus();
+          
         });
 
-        makecard(cardNo,cardCountries);
-        cardCountries = []; // empty countries after adding them to the card
-        
-        // Move focus to the most recent card created
-        $("#card" + cardNo).focus();
-        
+        /**************************************************
+        * Script to check all the boxes (and uncheck all) *
+        ***************************************************/
+
+        // Click handler for checkAll
+        $('#checkAllBtn').click(function(){
+          $("input:checkbox").prop("checked", true);
+          // $('.collapseAll').collapse('show'); // slow but works
+          $('.collapseAll').show(); // fast but can't turn switches on independently
+          $("input:checkbox").prop("aria-expanded", true); 
+        });
+        // Click handler for uncheckAll
+        $('#uncheckAllBtn').click(function(){
+          $("input:checkbox").prop("checked", false);
+          // $('.collapseAll').collapse('hide'); // slow but works
+          $('.collapseAll').hide(); // fast but can't turn switches on independently
+          $("input:checkbox").prop("aria-expanded", false);
+        });
+
+        $("input[name='cntry']").click(function(){
+          checkedCountry = `.${$(this).prop('value')}-collapse`;
+          if($(this).is(':checked')){
+            $(checkedCountry).show();
+          //   // find the data-target for this particular checkbox and set the elements with that data-target class to .show()
+          }else{
+            $(checkedCountry).hide();
+            // find the data-target for this particular checkbox and set the elements with that data-target class to .hide()
+          }
+        });
       });
       
-      /**************************************************
-      * Script to check all the boxes (and uncheck all) *
-      ***************************************************/
-
-      // using wildcards in class per https://codepen.io/AlexBezuska/pen/EtDJe
-      // Click handler for checkAll
-      $('#checkAllBtn').click(function(){
-        $("input:checkbox").prop("checked", true);
-        // $('.collapseAll').collapse('show'); // slow but works
-        $('.collapseAll').show(); // fast but can't turn switches on independently
-        $("input:checkbox").prop("aria-expanded", true); 
-      });
-      // Click handler for uncheckAll
-      $('#uncheckAllBtn').click(function(){
-        $("input:checkbox").prop("checked", false);
-        // $('.collapseAll').collapse('hide'); // slow but works
-        $('.collapseAll').hide(); // fast but can't turn switches on independently
-        $("input:checkbox").prop("aria-expanded", false);
+      allTplAndDataPromise.catch(
+        function(){
+          console.log('something is wrong');
       });
 
-      $("input[name='cntry']").click(function(){
-        checkedCountry = `.${$(this).prop('value')}-collapse`;
-        if($(this).is(':checked')){
-          $(checkedCountry).show();
-        //   // find the data-target for this particular checkbox and set the elements with that data-target class to .show()
-        }else{
-          $(checkedCountry).hide();
-          // find the data-target for this particular checkbox and set the elements with that data-target class to .hide()
-        }
+        /**************************************************
+        *  Tooltip (or popover) for hover/click on grid   *
+        **************************************************/
+      // Enable popover from popper.js
+      // This is not working! didn't work as a popover either
+      // note that it DID cause the screenreader to know what the conversion was because I added a title that said baseCode to colCode
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+        // $('#gridT').popover();
       });
     });
-    
-    allTplAndDataPromise.catch(
-      function(){
-        console.log('something is wrong');
+    window.addEventListener('load', (event) => {
+      alert('poop!');
+      $("#countryAUD").prop("checked", true);
+      $(".AUD-collapse").show();
+      $("#AUD-row").show();
     });
+  </script>
+  <script type="text/javascript" language="Javascript" src="">
+   
 
-      /**************************************************
-      *  Tooltip (or popover) for hover/click on grid   *
-      **************************************************/
-    // Enable popover from popper.js
-    // This is not working! didn't work as a popover either
-    // note that it DID cause the screenreader to know what the conversion was because I added a title that said baseCode to colCode
-    $(function () {
-      $('[data-toggle="tooltip"]').tooltip()
-      // $('#gridT').popover();
-    });
-  });
+    // window.onload = function(){
+    //   $("#countryAUD").prop("checked", true);
+    //   $(".AUD-collapse").show();
+    //   $("#AUD-row").show();
+    // }
 
-</script>
+  </script>
+     
 </body>
 </html>
