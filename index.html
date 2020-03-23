@@ -471,6 +471,25 @@
           // Render mustache to populate grid
           $('#gridT').append(Mustache.render(gTemplate, gridView))
 
+
+          // initialize some countries as checked
+          function checkSomeCountries(){
+            $("#countryRON").prop("checked", true);
+            $("#countryINR").prop("checked", true);
+            $("#countryISK").prop("checked", true);
+            $("#countryIDR").prop("checked", true);
+            $(".RON-collapse").show();
+            $(".INR-collapse").show();
+            $(".ISK-collapse").show();
+            $(".IDR-collapse").show();
+            // tried this to get the columns right but doesn't affect it
+            // $('#currencyTable'), function(){
+            //   $($.fn.dataTable.tables(true)).DataTable()
+            //   .columns.adjust();
+            // }
+          }
+          checkSomeCountries();
+
           /*****************************************************************
           * Enable dataTables to make fixed header and column for the grid *
           *****************************************************************/
@@ -480,10 +499,10 @@
             "dom": '<"left"f>ltipr', // this puts the filter (search) on the left. Adding "s" is supposed to add scroller
             paging: false, // gets rid of the "show 10 pulldown"
             ordering: false, // gets rid of the sort order chevrons
-            scrollY: 400,
-            scrollX: true,
-            responsive: true,
-            language: {searchPlaceholder: "Search Currencies"},
+            scrollY: 400, // gives a small vertical scroll area
+            scrollX: true, // allows scrolling left/right
+            responsive: true, //
+            language: {searchPlaceholder: "Search Currencies"}, // adds my text to the search window
           });
           // $('#currencyTable').DataTable();
 
@@ -624,16 +643,13 @@
           $("input[name='cntry']").click(function(){
             checkedCountry = `.${$(this).prop('value')}-collapse`;
             if($(this).is(':checked')){
+              // find the data-target for this particular checkbox and set the elements with that data-target class to .show()
               $(checkedCountry).show();
-            //   // find the data-target for this particular checkbox and set the elements with that data-target class to .show()
             }else{
-              $(checkedCountry).hide();
               // find the data-target for this particular checkbox and set the elements with that data-target class to .hide()
+              $(checkedCountry).hide();
             }
           }); // end click function for checkedCountry
-
-          $("#countryAUD").prop("checked", false);
-          $(".AUD-collapse").hide();
         
         }); // end of Promise.then
        
