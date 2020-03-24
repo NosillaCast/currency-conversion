@@ -2,9 +2,12 @@
 Styles to for Currency Converter
 */
 
+/* put search field on left */
 .dataTables_filter {
   float: left !important;
   }
-.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody {
+/* didn't know why i put this in so commented out */
+/* .dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody {
   overflow-y: scroll !important;
-}
+} */
+

@@ -152,7 +152,7 @@
           </div> <!-- close Pane 1 (tab) -->
           
           <!-- Tab Pane 2 - create grid of country conversions -->
-          <div class="tab-pane active" id="grid" role="tabpanel" aria-labelledby="byGrid-tab"> <!-- Open Pane 2 (tab) -->
+          <div class="col tab-pane active" id="grid" role="tabpanel" aria-labelledby="byGrid-tab"> <!-- Open Pane 2 (tab) -->
             <div class="container-fluid"> <!-- open container for tab 2 -->
               <div class="row pt-3">
                 <div class="col">
@@ -471,7 +471,6 @@
           // Render mustache to populate grid
           $('#gridT').append(Mustache.render(gTemplate, gridView))
 
-
           // initialize some countries as checked
           function checkSomeCountries(){
             $("#countryRON").prop("checked", true);
@@ -482,11 +481,13 @@
             $(".INR-collapse").show();
             $(".ISK-collapse").show();
             $(".IDR-collapse").show();
-            // tried this to get the columns right but doesn't affect it
-            // $('#currencyTable'), function(){
-            //   $($.fn.dataTable.tables(true)).DataTable()
-            //   .columns.adjust();
-            // }
+            // tried this to get the columns right 
+            // https://stackoverflow.com/questions/42115118/datatables-headers-not-full-width-on-page-load
+            $('#currencyTable'), function(){
+              $($.fn.dataTable.tables(true)).DataTable()
+              .columns.adjust();
+              fixedColumns().relayout();
+            }
           }
           checkSomeCountries();
 
@@ -503,6 +504,7 @@
             scrollX: true, // allows scrolling left/right
             responsive: true, //
             language: {searchPlaceholder: "Search Currencies"}, // adds my text to the search window
+            // fixedColumns: true
           });
           // $('#currencyTable').DataTable();
 
