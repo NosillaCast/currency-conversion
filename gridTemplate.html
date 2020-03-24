@@ -1,6 +1,6 @@
 <!-- template string -->
 <!-- Style for table -->
-<style>
+<!-- <style>
   table tr{
     height: 50px;
   }
@@ -12,18 +12,18 @@
     margin-left: 0px;
     padding-left: 0px;
   }
-</style>
+</style> -->
 
 <div class="container-fluid">
   <div class="row">
 
     <div class="col data-parent" id="showAllParent">
-      <table id="currencyTable" data-role="table" data-mode="columntoggle"  class="table table-condensed table-striped table-sm table-responsive table-hover tableData cell-border nowrap" style="width: 100%">
+      <table id="currencyTable" data-role="table" data-mode="columntoggle"  class="table table-condensed table-striped table-sm table-responsive table-hover tableData cell-border" style="width: 100%">
       <caption>Live data source: <a href="https://api.exchangeratesapi.io">https://api.exchangeratesapi.io</a></caption>
       
         <thead >
           <tr id="{{baseCode}}-row" >
-            <th scope="col" class="" width="" tabindex="0">Currencies</th> 
+            <th scope="col" class="" tabindex="0">Currencies</th> 
             {{#.}}
               <th scope="col" class="collapse {{baseCode}}-collapse collapseAll " id="{{baseCode}}-col" tabindex="0">
                 <p class="text-center">{{baseCode}}</p>
