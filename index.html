@@ -94,9 +94,9 @@
       <div class="col"> <!-- open col for nav + panes -->
         <nav class="nav nav-pills nav-justified" role="tablist">
           
-          <a class="nav-item nav-link border " id="byBase-tab" data-toggle="tab" href="#byBase" role="tab" aria-controls="byBase" aria-selected="false">Convert One Currency</a><!-- aria-selected = "false" b/c class is not "active" -->
+          <a class="nav-item nav-link active border " id="byBase-tab" data-toggle="tab" href="#byBase" role="tab" aria-controls="byBase" aria-selected="true">Convert One Currency</a><!-- aria-selected = "true" b/c class is "active" -->
           
-          <a class="nav-item nav-link active border" id="byGrid-tab" data-toggle="tab" href="#grid" role="tab" aria-controls="grid" aria-selected="true">Exchange Rate Table</a><!-- aria-selected = "true" b/c class is "active" -->
+          <a class="nav-item nav-link  border" id="byGrid-tab" data-toggle="tab" href="#grid" role="tab" aria-controls="grid" aria-selected="false">Exchange Rate Table</a><!-- aria-selected = "false" b/c class is not "active" -->
         
         </nav>
 
@@ -104,7 +104,7 @@
         <div class="row tab-content rounded-bottom px-3"> <!-- open panes -->
 
           <!-- Tab Pane 1 - convert specific amount by Base Country -->
-          <div class="tab-pane col " id="byBase" role="tabpanel" aria-labelledby="byBase-tab"> <!-- Open Pane 1 (tab) -->
+          <div class="tab-pane col  active" id="byBase" role="tabpanel" aria-labelledby="byBase-tab"> <!-- Open Pane 1 (tab) -->
             <!-- Text box to enter amount to convert (no mustache) -->
             <div class="container-fluid"> <!-- open container for convert by Base Country -->
               <div class="row d-flex mb-4 mt-4">
@@ -152,7 +152,7 @@
           </div> <!-- close Pane 1 (tab) -->
           
           <!-- Tab Pane 2 - create grid of country conversions -->
-          <div class="col tab-pane active" id="grid" role="tabpanel" aria-labelledby="byGrid-tab"> <!-- Open Pane 2 (tab) -->
+          <div class="col tab-pane" id="grid" role="tabpanel" aria-labelledby="byGrid-tab"> <!-- Open Pane 2 (tab) -->
             <div class="container-fluid"> <!-- open container for tab 2 -->
               <div class="row pt-3">
                 <div class="col">
